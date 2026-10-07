@@ -3,30 +3,44 @@
 """
 Automatická aktualizace valuace S&P 500 vůči Foreign-Adjusted MZM Proxy.
 
-Metodika:
+ZDROJE S&P 500
+--------------
+1. sp500w.xlsx:
+   dlouhá historická týdenní řada S&P 500
+2. FRED SP500:
+   novější denní řada; tam, kde existuje, má přednost
 
-    MZM_proxy = M2MNS - RMFSL + MMMFFAQ027S / 1000
+MĚNOVÁ METODIKA
+---------------
+MZM_proxy =
+    M2MNS - RMFSL + MMMFFAQ027S / 1000
 
-    foreign_share =
-        ROWCESQ027S / BOGZ1LM883164115Q
+foreign_share =
+    ROWCESQ027S / BOGZ1LM883164115Q
 
-    Foreign_adjusted_MZM_proxy =
-        MZM_proxy / (1 - foreign_share)
+Foreign_adjusted_MZM_proxy =
+    MZM_proxy / (1 - foreign_share)
 
-    valuation_raw =
-        SP500 / Foreign_adjusted_MZM_proxy
+Před rokem 1982 je pro historické prodloužení preferována
+oficiální řada MZMSL.
 
-    valuation_index =
-        100 * valuation_raw / 0.15
+VALUACE
+-------
+raw_ratio =
+    S&P 500 / Foreign_adjusted_MZM_proxy
 
-Historie:
-- zachovává se celá dostupná historická řada;
-- S&P 500 je pro historický graf převeden na měsíční poslední pozorování;
-- aktuální bod používá poslední dostupnou denní hodnotu S&P 500;
-- měnový jmenovatel používá poslední dostupnou hodnotu
-  Foreign-Adjusted MZM Proxy.
+valuation_index =
+    100 * raw_ratio / 0.15
 
-Zdroj:
+Index 100 tedy odpovídá raw ratio = 0.15.
+
+AKTUÁLNÍ BOD
+------------
+Používá:
+- poslední dostupnou denní hodnotu S&P 500 z FRED,
+- poslední dostupnou měsíční Foreign-Adjusted MZM Proxy.
+
+Zdroj online dat:
 Federal Reserve Bank of St. Louis, FRED API.
 """
 
@@ -53,9 +67,11 @@ DATA_DIR.mkdir(exist_ok=True)
 
 OUTPUT_JSON = DATA_DIR / "mzm_ratio.json"
 
+SP500_HISTORY_FILE = ROOT / "sp500w.xlsx"
+
 
 # ------------------------------------------------------------
-# FRED API
+# FRED
 # ------------------------------------------------------------
 
 FRED_API_URL = (
@@ -84,175 +100,10 @@ RATIO_REFERENCE_VALUE = 0.15
 
 
 # ============================================================
-# FRED DOWNLOAD
+# HELPERS
 # ============================================================
 
-def fetch_fred(series_id: str) -> pd.Series:
-    """
-    Stáhne celou dostupnou historii jedné FRED řady.
-
-    Používá oficiální JSON API:
-    /fred/series/observations
-
-    Při dočasném problému provede až 4 pokusy.
-    """
-
-    params = {
-        "series_id": series_id,
-        "api_key": FRED_API_KEY,
-        "file_type": "json",
-        "sort_order": "asc",
-        "limit": 100000,
-    }
-
-    last_error = None
-
-    for attempt in range(1, 5):
-
-        try:
-
-            print()
-            print(
-                f"{series_id}: pokus {attempt}/4"
-            )
-
-            response = requests.get(
-                FRED_API_URL,
-                params=params,
-                timeout=(20, 90),
-                headers={
-                    "User-Agent":
-                        "pkohout-sp500-valuace/1.0"
-                },
-            )
-
-            response.raise_for_status()
-
-            payload = response.json()
-
-            if "observations" not in payload:
-                raise RuntimeError(
-                    f"{series_id}: API nevrátilo pole observations"
-                )
-
-            observations = payload["observations"]
-
-            if not observations:
-                raise RuntimeError(
-                    f"{series_id}: FRED nevrátil žádná pozorování"
-                )
-
-            df = pd.DataFrame(
-                observations
-            )
-
-            if "date" not in df.columns:
-                raise RuntimeError(
-                    f"{series_id}: chybí datum"
-                )
-
-            if "value" not in df.columns:
-                raise RuntimeError(
-                    f"{series_id}: chybí hodnota"
-                )
-
-            df["date"] = pd.to_datetime(
-                df["date"],
-                errors="coerce",
-            )
-
-            # FRED používá "." pro missing value.
-            df["value"] = pd.to_numeric(
-                df["value"],
-                errors="coerce",
-            )
-
-            df = (
-                df
-                .dropna(
-                    subset=[
-                        "date",
-                        "value",
-                    ]
-                )
-                .drop_duplicates(
-                    subset="date",
-                    keep="last",
-                )
-                .sort_values("date")
-                .set_index("date")
-            )
-
-            series = df["value"].copy()
-
-            series.name = series_id
-
-            if series.empty:
-                raise RuntimeError(
-                    f"{series_id}: po odstranění missing values "
-                    "nezůstala žádná data"
-                )
-
-            print(
-                f"{series_id}: "
-                f"{series.index[0].date()} až "
-                f"{series.index[-1].date()}, "
-                f"počet {len(series):,}, "
-                f"poslední hodnota "
-                f"{series.iloc[-1]:,.4f}"
-            )
-
-            return series
-
-        except (
-            requests.exceptions.Timeout,
-            requests.exceptions.ConnectionError,
-            requests.exceptions.HTTPError,
-            requests.exceptions.JSONDecodeError,
-        ) as error:
-
-            last_error = error
-
-            print(
-                f"{series_id}: dočasná chyba:"
-            )
-
-            print(error)
-
-            if attempt < 4:
-
-                wait_seconds = (
-                    10 * attempt
-                )
-
-                print(
-                    f"{series_id}: čekám "
-                    f"{wait_seconds} sekund..."
-                )
-
-                time.sleep(
-                    wait_seconds
-                )
-
-        except Exception:
-            # Logické / datové chyby nechceme maskovat
-            # čtyřmi identickými pokusy.
-            raise
-
-    raise RuntimeError(
-        f"{series_id}: FRED se nepodařilo stáhnout "
-        "ani po 4 pokusech."
-    ) from last_error
-
-
-# ============================================================
-# JSON HELPERS
-# ============================================================
-
-def json_number(
-    value,
-    digits=None,
-):
+def json_number(value, digits=None):
 
     if value is None:
         return None
@@ -289,10 +140,6 @@ def json_date(value):
     )
 
 
-# ============================================================
-# MONTHLY RESAMPLING
-# ============================================================
-
 def month_end(
     series: pd.Series,
     method="last",
@@ -314,6 +161,295 @@ def month_end(
 
 
 # ============================================================
+# FRED DOWNLOAD
+# ============================================================
+
+def fetch_fred(series_id: str) -> pd.Series:
+    """
+    Stáhne celou dostupnou historii jedné FRED řady.
+
+    Při dočasném problému provede až 4 pokusy.
+    """
+
+    params = {
+        "series_id": series_id,
+        "api_key": FRED_API_KEY,
+        "file_type": "json",
+        "sort_order": "asc",
+        "limit": 100000,
+    }
+
+    last_error = None
+
+    for attempt in range(1, 5):
+
+        try:
+
+            print()
+            print(
+                f"{series_id}: pokus {attempt}/4"
+            )
+
+            response = requests.get(
+                FRED_API_URL,
+                params=params,
+                timeout=(20, 90),
+                headers={
+                    "User-Agent":
+                        "pkohout-sp500-valuace/2.0"
+                },
+            )
+
+            response.raise_for_status()
+
+            payload = response.json()
+
+            if "observations" not in payload:
+                raise RuntimeError(
+                    f"{series_id}: API nevrátilo observations"
+                )
+
+            observations = payload["observations"]
+
+            if not observations:
+                raise RuntimeError(
+                    f"{series_id}: žádná pozorování"
+                )
+
+            df = pd.DataFrame(
+                observations
+            )
+
+            if "date" not in df.columns:
+                raise RuntimeError(
+                    f"{series_id}: chybí datum"
+                )
+
+            if "value" not in df.columns:
+                raise RuntimeError(
+                    f"{series_id}: chybí hodnota"
+                )
+
+            df["date"] = pd.to_datetime(
+                df["date"],
+                errors="coerce",
+            )
+
+            # FRED označuje missing values znakem "."
+            df["value"] = pd.to_numeric(
+                df["value"],
+                errors="coerce",
+            )
+
+            df = (
+                df
+                .dropna(
+                    subset=[
+                        "date",
+                        "value",
+                    ]
+                )
+                .drop_duplicates(
+                    subset="date",
+                    keep="last",
+                )
+                .sort_values("date")
+                .set_index("date")
+            )
+
+            result = df["value"].copy()
+            result.name = series_id
+
+            if result.empty:
+                raise RuntimeError(
+                    f"{series_id}: žádná použitelná data"
+                )
+
+            print(
+                f"{series_id}: "
+                f"{result.index[0].date()} až "
+                f"{result.index[-1].date()}, "
+                f"{len(result):,} pozorování, "
+                f"poslední hodnota "
+                f"{result.iloc[-1]:,.4f}"
+            )
+
+            return result
+
+        except requests.exceptions.RequestException as error:
+
+            last_error = error
+
+            print(
+                f"{series_id}: chyba spojení:"
+            )
+
+            print(error)
+
+            if attempt < 4:
+
+                wait_seconds = (
+                    10 * attempt
+                )
+
+                print(
+                    f"Čekám {wait_seconds} s..."
+                )
+
+                time.sleep(
+                    wait_seconds
+                )
+
+        except ValueError as error:
+
+            last_error = error
+
+            print(
+                f"{series_id}: chyba JSON:"
+            )
+
+            print(error)
+
+            if attempt < 4:
+
+                wait_seconds = (
+                    10 * attempt
+                )
+
+                time.sleep(
+                    wait_seconds
+                )
+
+        except Exception:
+            raise
+
+    raise RuntimeError(
+        f"{series_id}: FRED se nepodařilo stáhnout "
+        "ani po 4 pokusech."
+    ) from last_error
+
+
+# ============================================================
+# HISTORICKÝ S&P 500
+# ============================================================
+
+def load_historical_sp500(
+    filename: Path,
+) -> pd.Series:
+    """
+    Načte týdenní historický S&P 500 ze sp500w.xlsx
+    a převede jej na měsíční řadu.
+
+    Použije poslední dostupný Close v každém měsíci.
+    """
+
+    print()
+    print(
+        "Načítám historický S&P 500:"
+    )
+
+    print(
+        filename
+    )
+
+    if not filename.exists():
+        raise FileNotFoundError(
+            f"Chybí historický soubor: {filename}"
+        )
+
+    df = pd.read_excel(
+        filename
+    )
+
+    required_columns = {
+        "Date",
+        "Close",
+    }
+
+    missing = (
+        required_columns
+        - set(df.columns)
+    )
+
+    if missing:
+        raise RuntimeError(
+            "sp500w.xlsx neobsahuje požadované sloupce: "
+            + ", ".join(
+                sorted(missing)
+            )
+        )
+
+    df = df[
+        [
+            "Date",
+            "Close",
+        ]
+    ].copy()
+
+    df["Date"] = pd.to_datetime(
+        df["Date"],
+        errors="coerce",
+    )
+
+    df["Close"] = pd.to_numeric(
+        df["Close"],
+        errors="coerce",
+    )
+
+    df = (
+        df
+        .dropna(
+            subset=[
+                "Date",
+                "Close",
+            ]
+        )
+        .drop_duplicates(
+            subset="Date",
+            keep="last",
+        )
+        .sort_values(
+            "Date"
+        )
+        .set_index(
+            "Date"
+        )
+    )
+
+    if df.empty:
+        raise RuntimeError(
+            "sp500w.xlsx neobsahuje použitelná data."
+        )
+
+    print(
+        "Historický S&P 500:",
+        df.index[0].date(),
+        "až",
+        df.index[-1].date(),
+        f"({len(df):,} týdenních pozorování)",
+    )
+
+    monthly = (
+        df["Close"]
+        .resample("ME")
+        .last()
+    )
+
+    monthly.name = (
+        "SP500_historical"
+    )
+
+    print(
+        "Měsíční historický S&P 500:",
+        monthly.index[0].date(),
+        "až",
+        monthly.index[-1].date(),
+    )
+
+    return monthly
+
+
+# ============================================================
 # MAIN
 # ============================================================
 
@@ -331,15 +467,26 @@ def main():
         "=" * 72
     )
 
-    print()
-    print(
-        "Stahuji celou dostupnou historii z FRED API..."
+
+    # --------------------------------------------------------
+    # HISTORICKÝ S&P 500
+    # --------------------------------------------------------
+
+    sp500_historical_monthly = (
+        load_historical_sp500(
+            SP500_HISTORY_FILE
+        )
     )
 
 
     # --------------------------------------------------------
-    # DOWNLOAD
+    # FRED DOWNLOAD
     # --------------------------------------------------------
+
+    print()
+    print(
+        "Stahuji data z FRED API..."
+    )
 
     raw = {}
 
@@ -349,17 +496,19 @@ def main():
             series_id
         )
 
-        # mírné šetření API
-        time.sleep(0.5)
+        # Šetrnější vůči API.
+        time.sleep(
+            0.5
+        )
 
 
-    # --------------------------------------------------------
-    # MONTHLY SERIES
-    # --------------------------------------------------------
+    # ========================================================
+    # MĚNOVÉ ŘADY
+    # ========================================================
 
     print()
     print(
-        "Připravuji měsíční řady..."
+        "Připravuji měnové řady..."
     )
 
 
@@ -416,7 +565,7 @@ def main():
 
 
     # --------------------------------------------------------
-    # FORWARD FILL
+    # FORWARD-FILL NIŽŠÍCH FREKVENCÍ
     # --------------------------------------------------------
 
     lower_frequency_columns = [
@@ -447,25 +596,28 @@ def main():
     )
 
 
-    # --------------------------------------------------------
+    # ========================================================
     # MZM PROXY
-    # --------------------------------------------------------
+    # ========================================================
 
     data["MZM_proxy"] = (
         data["M2MNS"]
         - data["RMFSL"]
-        + data["MMMFFAQ027S"]
-        / 1000.0
+        + (
+            data["MMMFFAQ027S"]
+            / 1000.0
+        )
     )
 
 
-    # --------------------------------------------------------
-    # FOREIGN OWNERSHIP SHARE
-    # --------------------------------------------------------
+    # ========================================================
+    # FOREIGN SHARE
+    # ========================================================
 
     data["foreign_share"] = (
         data["ROWCESQ027S"]
-        / data[
+        /
+        data[
             "BOGZ1LM883164115Q"
         ]
     )
@@ -490,25 +642,30 @@ def main():
     ] = np.nan
 
 
-    # --------------------------------------------------------
+    # ========================================================
     # FOREIGN-ADJUSTED MZM
-    # --------------------------------------------------------
+    # ========================================================
 
     data[
         "Foreign_adjusted_MZM_proxy"
     ] = (
-        data["MZM_proxy"]
+        data[
+            "MZM_proxy"
+        ]
         /
         (
             1.0
-            - data["foreign_share"]
+            -
+            data[
+                "foreign_share"
+            ]
         )
     )
 
 
-    # --------------------------------------------------------
-    # HISTORICAL EXTENSION
-    # --------------------------------------------------------
+    # ========================================================
+    # HISTORICKÉ PRODLOUŽENÍ MZM
+    # ========================================================
 
     extended_column = (
         "Foreign_adjusted_MZM_proxy_extended"
@@ -548,48 +705,81 @@ def main():
     )
 
 
-    # --------------------------------------------------------
-    # S&P 500
-    # --------------------------------------------------------
+    # ========================================================
+    # S&P 500 — FRED + HISTORIE
+    # ========================================================
+
+    print()
+    print(
+        "Spojuji historický S&P 500 s FRED..."
+    )
+
 
     sp500_daily = (
-        raw["SP500"]
+        raw[
+            "SP500"
+        ]
         .dropna()
         .sort_index()
     )
 
 
     if sp500_daily.empty:
-
         raise RuntimeError(
-            "S&P 500 nemá žádná použitelná data."
+            "FRED SP500 nemá žádná použitelná data."
         )
 
 
-    sp500_monthly = (
+    sp500_fred_monthly = (
         sp500_daily
         .resample("ME")
         .last()
     )
 
 
-    sp500_monthly.name = (
-        "SP500"
+    sp500_fred_monthly.name = (
+        "SP500_fred"
+    )
+
+
+    # FRED má přednost.
+    # Historický XLSX doplní období,
+    # které ve FRED chybí.
+    sp500_combined = (
+        sp500_fred_monthly
+        .combine_first(
+            sp500_historical_monthly
+        )
+    )
+
+
+    sp500_combined.name = (
+        "SP500_combined"
+    )
+
+
+    print(
+        "Kombinovaný S&P 500:",
+        sp500_combined.dropna().index[0].date(),
+        "až",
+        sp500_combined.dropna().index[-1].date(),
     )
 
 
     data = data.join(
-        sp500_monthly,
+        sp500_combined,
         how="left",
     )
 
 
-    # --------------------------------------------------------
-    # VALUATION
-    # --------------------------------------------------------
+    # ========================================================
+    # HISTORICKÁ VALUACE
+    # ========================================================
 
     data["raw_ratio"] = (
-        data["SP500"]
+        data[
+            "SP500_combined"
+        ]
         /
         data[
             extended_column
@@ -600,7 +790,9 @@ def main():
     data["index"] = (
         100.0
         *
-        data["raw_ratio"]
+        data[
+            "raw_ratio"
+        ]
         /
         RATIO_REFERENCE_VALUE
     )
@@ -609,7 +801,7 @@ def main():
     matched = (
         data[
             [
-                "SP500",
+                "SP500_combined",
                 extended_column,
                 "raw_ratio",
                 "index",
@@ -626,16 +818,15 @@ def main():
 
 
     if matched.empty:
-
         raise RuntimeError(
             "Nevznikla žádná společná historická "
-            "pozorování S&P 500 a MZM proxy."
+            "pozorování S&P 500 a MZM."
         )
 
 
-    # --------------------------------------------------------
-    # CURRENT S&P 500
-    # --------------------------------------------------------
+    # ========================================================
+    # AKTUÁLNÍ SNAPSHOT
+    # ========================================================
 
     latest_sp500_date = (
         sp500_daily.index[-1]
@@ -647,10 +838,6 @@ def main():
     )
 
 
-    # --------------------------------------------------------
-    # CURRENT MZM
-    # --------------------------------------------------------
-
     latest_mzm_series = (
         data[
             extended_column
@@ -661,10 +848,8 @@ def main():
 
 
     if latest_mzm_series.empty:
-
         raise RuntimeError(
-            "Foreign-Adjusted MZM Proxy "
-            "nemá žádná použitelná data."
+            "Foreign-Adjusted MZM Proxy je prázdná."
         )
 
 
@@ -677,10 +862,6 @@ def main():
         latest_mzm_series.iloc[-1]
     )
 
-
-    # --------------------------------------------------------
-    # CURRENT RATIO
-    # --------------------------------------------------------
 
     current_raw_ratio = (
         latest_sp500
@@ -698,9 +879,9 @@ def main():
     )
 
 
-    # --------------------------------------------------------
-    # COMPLETE HISTORICAL SERIES
-    # --------------------------------------------------------
+    # ========================================================
+    # HISTORIE PRO JSON
+    # ========================================================
 
     history = []
 
@@ -716,7 +897,9 @@ def main():
 
                 "sp500":
                     json_number(
-                        row["SP500"],
+                        row[
+                            "SP500_combined"
+                        ],
                         6,
                     ),
 
@@ -738,7 +921,9 @@ def main():
 
                 "index":
                     json_number(
-                        row["index"],
+                        row[
+                            "index"
+                        ],
                         6,
                     ),
 
@@ -748,9 +933,9 @@ def main():
         )
 
 
-    # --------------------------------------------------------
+    # ========================================================
     # CHART POINTS
-    # --------------------------------------------------------
+    # ========================================================
 
     chart_points = [
         dict(point)
@@ -823,9 +1008,9 @@ def main():
         )
 
 
-    # --------------------------------------------------------
-    # AVERAGES
-    # --------------------------------------------------------
+    # ========================================================
+    # PRŮMĚRY
+    # ========================================================
 
     end_date = pd.Timestamp(
         latest_sp500_date
@@ -900,14 +1085,14 @@ def main():
     )
 
 
-    # --------------------------------------------------------
-    # PAYLOAD
-    # --------------------------------------------------------
+    # ========================================================
+    # JSON
+    # ========================================================
 
     payload = {
 
         "schema_version":
-            4,
+            5,
 
         "status":
             "ok",
@@ -967,6 +1152,7 @@ def main():
                 full_history_average,
         },
 
+        # zpětná kompatibilita
         "five_year_monthly_average":
             five_year_average,
 
@@ -1027,6 +1213,24 @@ def main():
         "chart_points":
             chart_points,
 
+        "data_sources": {
+
+            "sp500_historical":
+                "sp500w.xlsx",
+
+            "sp500_current":
+                "FRED SP500",
+
+            "money":
+                "FRED",
+
+            "sp500_priority":
+                (
+                    "FRED where available; "
+                    "sp500w.xlsx fills earlier history."
+                ),
+        },
+
         "methodology": {
 
             "mzm_proxy_formula":
@@ -1049,33 +1253,39 @@ def main():
 
             "historical_extension":
                 (
-                    "Before 1982, "
-                    "MZMSL is preferred "
-                    "as the historical "
-                    "approximation."
+                    "Before 1982, MZMSL is preferred "
+                    "as the historical approximation."
+                ),
+
+            "sp500_history_note":
+                (
+                    "Historical S&P 500 is taken from "
+                    "sp500w.xlsx and converted from weekly "
+                    "observations to the final available close "
+                    "of each month. FRED takes priority wherever "
+                    "both sources overlap."
                 ),
 
             "current_snapshot_note":
                 (
-                    "Current S&P 500 "
-                    "uses the latest "
-                    "available daily observation; "
-                    "MZM uses the latest "
-                    "published monthly value."
+                    "Current S&P 500 uses the latest "
+                    "available daily FRED observation; "
+                    "MZM uses the latest published "
+                    "monthly value."
                 ),
 
             "source":
                 (
-                    "Federal Reserve Bank "
-                    "of St. Louis, FRED API"
+                    "Federal Reserve Bank of St. Louis, "
+                    "FRED API, plus sp500w.xlsx"
                 ),
         },
     }
 
 
-    # --------------------------------------------------------
-    # SAVE JSON
-    # --------------------------------------------------------
+    # ========================================================
+    # SAVE
+    # ========================================================
 
     OUTPUT_JSON.write_text(
         json.dumps(
@@ -1088,9 +1298,9 @@ def main():
     )
 
 
-    # --------------------------------------------------------
-    # DIAGNOSTICS
-    # --------------------------------------------------------
+    # ========================================================
+    # DIAGNOSTIKA
+    # ========================================================
 
     print()
     print(
@@ -1113,7 +1323,7 @@ def main():
 
 
     print(
-        "Historie:",
+        "Historie valuace:",
         json_date(
             matched.index[0]
         ),
@@ -1126,7 +1336,9 @@ def main():
 
     print(
         "Počet historických bodů:",
-        len(history),
+        len(
+            history
+        ),
     )
 
 
