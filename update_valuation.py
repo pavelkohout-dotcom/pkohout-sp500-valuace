@@ -61,7 +61,7 @@ def fetch_fred(series_id: str) -> pd.Series:
     url = FRED_CSV.format(series=series_id)
     response = requests.get(
         url,
-        timeout=60,
+        timeout=180,
         headers={"User-Agent": "pkohout-valuace-sp500/1.0"},
     )
     response.raise_for_status()
