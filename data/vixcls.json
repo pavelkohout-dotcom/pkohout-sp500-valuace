@@ -1,0 +1,10 @@
+{
+  "series_id": "VIXCLS",
+  "value": 15.21,
+  "date": "2026-10-12",
+  "source": "https://fred.stlouisfed.org/series/VIXCLS",
+  "attribution": "CBOE, via Federal Reserve Bank of St. Louis (FRED)",
+  "frequency": "Daily, Close",
+  "units": "Index",
+  "generated_utc": "2026-10-13T16:15:11+00:00"
+}
