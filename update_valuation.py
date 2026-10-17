@@ -99,6 +99,20 @@ FOREIGN_ADJUSTED_MZM_START_DATE = pd.Timestamp(
 RATIO_REFERENCE_VALUE = 0.15
 
 
+# ------------------------------------------------------------
+# SAZBA 3M T-BILL (TB3MS) PRO PŘEDPOVĚĎ NA STRÁNCE
+# ------------------------------------------------------------
+# Stránka počítá změnu sazby za 36 měsíců, proto stačí posledních
+# 60 měsíců. Prohlížeč FRED přímo stáhnout nemůže (CORS),
+# takže sazbu ukládáme do mzm_ratio.json jako klíč "tb3ms".
+# Stahování je nepovinné: když selže, hlavní aktualizace
+# valuace se nezastaví a použije se předchozí uložená sazba.
+
+TB3MS_SERIES_ID = "TB3MS"
+
+TB3MS_MONTHS_KEPT = 60
+
+
 # ============================================================
 # HELPERS
 # ============================================================
@@ -452,6 +466,62 @@ def load_historical_sp500(
 # ============================================================
 # MAIN
 # ============================================================
+
+def build_tb3ms_payload() -> dict:
+    """
+    Vrátí slovník {"YYYY-MM": sazba v %} s posledními měsíci TB3MS.
+
+    Při chybě stahování zachová hodnoty z dříve uloženého JSONu.
+    Pokud neexistují ani ty, vrátí prázdný slovník.
+    """
+
+    try:
+
+        series = fetch_fred(
+            TB3MS_SERIES_ID
+        )
+
+        series = series.tail(
+            TB3MS_MONTHS_KEPT
+        )
+
+        return {
+            ts.strftime("%Y-%m"): round(float(value), 2)
+            for ts, value in series.items()
+        }
+
+    except Exception as error:
+
+        print()
+        print(
+            "VAROVÁNÍ: TB3MS se nepodařilo stáhnout, "
+            "použiji dříve uloženou sazbu."
+        )
+        print(error)
+
+    try:
+
+        previous = json.loads(
+            OUTPUT_JSON.read_text(
+                encoding="utf-8"
+            )
+        )
+
+        old = previous.get("tb3ms")
+
+        if isinstance(old, dict):
+
+            return {
+                str(k): float(v)
+                for k, v in old.items()
+            }
+
+    except Exception:
+
+        pass
+
+    return {}
+
 
 def main():
 
@@ -1089,6 +1159,17 @@ def main():
     # JSON
     # ========================================================
 
+    tb3ms_payload = build_tb3ms_payload()
+
+    print()
+    print(
+        "TB3MS měsíců v JSONu:",
+        len(tb3ms_payload),
+        "| poslední:",
+        max(tb3ms_payload) if tb3ms_payload else "—",
+    )
+
+
     payload = {
 
         "schema_version":
@@ -1213,6 +1294,9 @@ def main():
         "chart_points":
             chart_points,
 
+        "tb3ms":
+            tb3ms_payload,
+
         "data_sources": {
 
             "sp500_historical":
@@ -1223,6 +1307,10 @@ def main():
 
             "money":
                 "FRED",
+
+            "tb3ms":
+                "FRED TB3MS (3-Month Treasury Bill, "
+                "monthly average, % p.a.)",
 
             "sp500_priority":
                 (
