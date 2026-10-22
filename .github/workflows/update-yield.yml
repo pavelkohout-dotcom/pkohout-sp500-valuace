@@ -1,0 +1,44 @@
+name: Aktualizace T10Y2Y
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - update_yield.py
+      - .github/workflows/update-yield.yml
+  schedule:
+    - cron: '15 23 * * 1-5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-yield
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Načíst rozdíl výnosů T10Y2Y
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python update_yield.py
+      - name: Uložit ověřená data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/t10y2y.json
+          if git diff --cached --quiet; then
+            echo 'T10Y2Y beze změny.'
+            exit 0
+          fi
+          git commit -m 'Aktualizace T10Y2Y z FRED'
+          git pull --rebase origin main
+          git push origin HEAD:main
