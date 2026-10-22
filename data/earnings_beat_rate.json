@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "metric": "sp500_eps_beat_rate",
+  "provider": "FactSet Earnings Insight",
+  "quarter": "2026-Q3",
+  "value": 84,
+  "reporting_percent": 9,
+  "reporting_relation": "eq",
+  "report_date": "2026-10-16",
+  "source": "https://advantage.factset.com/hubfs/Website/Resources%20Section/Research%20Desk/Earnings%20Insight/EarningsInsight_101626.pdf",
+  "source_page": 1,
+  "status": "partial"
+}
