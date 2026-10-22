@@ -1,0 +1,40 @@
+name: Aktualizace EPS Beat Rate
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - update_earnings.py
+      - .github/workflows/update-earnings.yml
+  schedule:
+    - cron: '15 20 * * 5'
+    - cron: '15 6 * * 6'
+permissions:
+  contents: write
+concurrency:
+  group: update-earnings
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pypdf==6.10.0
+      - name: Načíst poslední ověřený přehled FactSet
+        run: python update_earnings.py
+      - name: Uložit ověřená data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/earnings_beat_rate.json
+          if git diff --cached --quiet; then
+            echo 'EPS beat rate beze změny.'
+            exit 0
+          fi
+          git commit -m 'Aktualizace EPS beat rate z FactSet'
+          git pull --rebase origin main
+          git push origin HEAD:main
