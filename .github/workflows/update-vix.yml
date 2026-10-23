@@ -8,7 +8,7 @@ on:
       - update_vix.py
       - .github/workflows/update-vix.yml
   schedule:
-    - cron: '45 15 * * 1-5'
+    - cron: '17 * * * 1-5'
 
 permissions:
   contents: write
