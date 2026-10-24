@@ -9,6 +9,11 @@ ZDROJE S&P 500
    dlouhá historická týdenní řada S&P 500
 2. FRED SP500:
    novější denní řada; tam, kde existuje, má přednost
+3. Yahoo Finance (^GSPC), záložně Stooq (^spx):
+   nejčerstvější denní hodnoty. FRED má zpoždění i několik dnů,
+   proto se hodnoty z Yahoo/Stooq doplní jen za poslední datum FRED.
+   Když oba zdroje selžou nebo vrátí podezřelou hodnotu,
+   použije se samotný FRED.
 
 MĚNOVÁ METODIKA
 ---------------
@@ -37,7 +42,7 @@ Index 100 tedy odpovídá raw ratio = 0.15.
 AKTUÁLNÍ BOD
 ------------
 Používá:
-- poslední dostupnou denní hodnotu S&P 500 z FRED,
+- poslední dostupnou denní hodnotu S&P 500 (Yahoo/Stooq, jinak FRED),
 - poslední dostupnou měsíční Foreign-Adjusted MZM Proxy.
 
 Zdroj online dat:
@@ -46,6 +51,7 @@ Federal Reserve Bank of St. Louis, FRED API.
 
 from __future__ import annotations
 
+import io
 import json
 import time
 from datetime import datetime, timezone
@@ -90,6 +96,29 @@ SERIES = {
     "ROWCESQ027S": "ROWCESQ027S",
     "BOGZ1LM883164115Q": "BOGZ1LM883164115Q",
 }
+
+
+# ------------------------------------------------------------
+# ČERSTVÝ S&P 500 (Yahoo Finance, záložně Stooq)
+# ------------------------------------------------------------
+# FRED publikuje SP500 se zpožděním (někdy i 3 dny). Novější
+# hodnoty proto doplníme z Yahoo Finance (neoficiální JSON
+# endpoint, symbol ^GSPC), záložně ze Stooq (CSV, symbol ^spx).
+# Doplněk je nepovinný: když selže, použije se jen FRED.
+
+YAHOO_CHART_URL = (
+    "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC"
+)
+
+STOOQ_CSV_URL = "https://stooq.com/q/d/l/"
+
+FRESH_SP500_USER_AGENT = (
+    "Mozilla/5.0 (compatible; pkohout-sp500-valuace/2.1)"
+)
+
+# Čerstvá hodnota se zamítne, když se od poslední hodnoty FRED
+# liší o víc než tento podíl (ochrana proti chybnému zdroji).
+FRESH_SP500_MAX_DEVIATION = 0.15
 
 
 FOREIGN_ADJUSTED_MZM_START_DATE = pd.Timestamp(
@@ -341,6 +370,227 @@ def fetch_fred(series_id: str) -> pd.Series:
         f"{series_id}: FRED se nepodařilo stáhnout "
         "ani po 4 pokusech."
     ) from last_error
+
+
+# ============================================================
+# ČERSTVÝ S&P 500 — YAHOO / STOOQ
+# ============================================================
+
+def fetch_sp500_yahoo() -> pd.Series:
+    """
+    Denní hodnoty S&P 500 (^GSPC) za poslední měsíc z Yahoo Finance.
+
+    Poslední hodnota může být průběžná cena během obchodní seance.
+    """
+
+    response = requests.get(
+        YAHOO_CHART_URL,
+        params={
+            "range": "1mo",
+            "interval": "1d",
+        },
+        timeout=(10, 30),
+        headers={
+            "User-Agent": FRESH_SP500_USER_AGENT,
+        },
+    )
+
+    response.raise_for_status()
+
+    result = response.json()["chart"]["result"][0]
+
+    timestamps = result["timestamp"]
+
+    closes = result["indicators"]["quote"][0]["close"]
+
+    # časová značka -> obchodní den v New Yorku
+    dates = (
+        pd.to_datetime(
+            timestamps,
+            unit="s",
+            utc=True,
+        )
+        .tz_convert("America/New_York")
+        .normalize()
+        .tz_localize(None)
+    )
+
+    series = pd.Series(
+        closes,
+        index=dates,
+        dtype="float64",
+    )
+
+    series = (
+        series
+        .dropna()
+        .groupby(level=0)
+        .last()
+        .sort_index()
+    )
+
+    series.name = "SP500"
+
+    return series
+
+
+def fetch_sp500_stooq() -> pd.Series:
+    """
+    Denní hodnoty S&P 500 (^spx) ze Stooq (CSV).
+    """
+
+    response = requests.get(
+        STOOQ_CSV_URL,
+        params={
+            "s": "^spx",
+            "i": "d",
+        },
+        timeout=(10, 30),
+        headers={
+            "User-Agent": FRESH_SP500_USER_AGENT,
+        },
+    )
+
+    response.raise_for_status()
+
+    text = response.text.strip()
+
+    # Při chybě nebo omezení přístupu Stooq nevrací CSV.
+    if not text.lower().startswith("date,"):
+        raise RuntimeError(
+            "Stooq nevrátil CSV: "
+            + text[:80].replace("\n", " ")
+        )
+
+    df = pd.read_csv(
+        io.StringIO(text),
+        parse_dates=["Date"],
+    )
+
+    series = (
+        pd.Series(
+            pd.to_numeric(
+                df["Close"],
+                errors="coerce",
+            ).values,
+            index=pd.DatetimeIndex(
+                df["Date"]
+            ),
+        )
+        .dropna()
+        .groupby(level=0)
+        .last()
+        .sort_index()
+        .tail(40)
+    )
+
+    series.name = "SP500"
+
+    return series
+
+
+def add_fresh_sp500(
+    fred_daily: pd.Series,
+) -> tuple[pd.Series, str]:
+    """
+    Doplní k denní řadě FRED novější hodnoty z Yahoo / Stooq.
+
+    Vrací (řada, popis zdroje). Při jakémkoli problému vrací
+    původní řadu FRED beze změny.
+    """
+
+    last_fred_date = fred_daily.index[-1]
+
+    last_fred_value = float(
+        fred_daily.iloc[-1]
+    )
+
+    sources = (
+        ("Yahoo Finance ^GSPC", fetch_sp500_yahoo),
+        ("Stooq ^spx", fetch_sp500_stooq),
+    )
+
+    for name, fetcher in sources:
+
+        for attempt in range(1, 4):
+
+            try:
+
+                fresh = fetcher()
+
+                break
+
+            except Exception as error:
+
+                fresh = None
+
+                print(
+                    f"{name}: pokus {attempt}/3 "
+                    f"se nezdařil: {error}"
+                )
+
+                if attempt < 3:
+                    time.sleep(5 * attempt)
+
+        if fresh is None or fresh.empty:
+            continue
+
+        newer = fresh[
+            fresh.index > last_fred_date
+        ]
+
+        if newer.empty:
+
+            print(
+                f"{name}: nic novějšího než FRED "
+                f"({last_fred_date.date()})."
+            )
+
+            return fred_daily, "FRED SP500"
+
+        deviation = abs(
+            float(newer.iloc[-1])
+            / last_fred_value
+            - 1.0
+        )
+
+        if (
+            not np.isfinite(deviation)
+            or (newer <= 0).any()
+            or deviation > FRESH_SP500_MAX_DEVIATION
+        ):
+
+            print(
+                f"{name}: hodnota "
+                f"{float(newer.iloc[-1]):,.2f} se od FRED "
+                f"({last_fred_value:,.2f}) liší o "
+                f"{deviation:.1%}, zamítnuto."
+            )
+
+            continue
+
+        combined = pd.concat(
+            [
+                fred_daily,
+                newer.rename(fred_daily.name),
+            ]
+        ).sort_index()
+
+        print(
+            f"{name}: doplněno {len(newer)} "
+            f"novějších dní, poslední "
+            f"{newer.index[-1].date()} = "
+            f"{float(newer.iloc[-1]):,.2f}"
+        )
+
+        return combined, f"{name} + FRED SP500"
+
+    print(
+        "Čerstvý S&P 500 se nepodařilo získat, "
+        "používám jen FRED."
+    )
+
+    return fred_daily, "FRED SP500"
 
 
 # ============================================================
@@ -798,6 +1048,15 @@ def main():
         raise RuntimeError(
             "FRED SP500 nemá žádná použitelná data."
         )
+
+
+    # Doplnění nejčerstvějších dní z Yahoo / Stooq
+    # (FRED má zpoždění). Při selhání zůstává FRED.
+    sp500_daily, sp500_current_source = (
+        add_fresh_sp500(
+            sp500_daily
+        )
+    )
 
 
     sp500_fred_monthly = (
@@ -1303,7 +1562,7 @@ def main():
                 "sp500w.xlsx",
 
             "sp500_current":
-                "FRED SP500",
+                sp500_current_source,
 
             "money":
                 "FRED",
