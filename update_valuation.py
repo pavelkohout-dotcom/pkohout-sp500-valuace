@@ -1616,7 +1616,10 @@ def main():
             "current_snapshot_note":
                 (
                     "Current S&P 500 uses the latest "
-                    "available daily FRED observation; "
+                    "available value from Yahoo Finance "
+                    "(intraday price during US trading "
+                    "hours, otherwise the last close), "
+                    "falling back to Stooq or FRED; "
                     "MZM uses the latest published "
                     "monthly value."
                 ),
