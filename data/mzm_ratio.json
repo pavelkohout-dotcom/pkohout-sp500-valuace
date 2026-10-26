@@ -1,7 +1,7 @@
 {
   "schema_version": 5,
   "status": "ok",
-  "generated_utc": "2026-10-26T19:44:51Z",
+  "generated_utc": "2026-10-26T23:36:06Z",
   "series_name": "S&P 500 / Foreign-adjusted MZM proxy index",
   "history_start": "1959-01-31",
   "history_end": "2026-08-31",
@@ -19,11 +19,11 @@
   "current_snapshot_appended_to_chart": true,
   "current_snapshot": {
     "sp500_date": "2026-10-26",
-    "sp500": 7681.459961,
+    "sp500": 7676.77002,
     "foreign_adjusted_mzm_date": "2026-08-31",
     "foreign_adjusted_mzm": 35566.073938,
-    "raw_ratio": 0.215977169,
-    "index": 143.984779,
+    "raw_ratio": 0.215845303,
+    "index": 143.896869,
     "mixed_vintage": true
   },
   "history": [
@@ -13023,11 +13023,11 @@
     },
     {
       "date": "2026-10-26",
-      "sp500": 7681.459961,
+      "sp500": 7676.77002,
       "foreign_adjusted_mzm_date": "2026-08-31",
       "foreign_adjusted_mzm": 35566.073938,
-      "raw_ratio": 0.215977169,
-      "index": 143.984779,
+      "raw_ratio": 0.215845303,
+      "index": 143.896869,
       "kind": "current_snapshot"
     }
   ],
