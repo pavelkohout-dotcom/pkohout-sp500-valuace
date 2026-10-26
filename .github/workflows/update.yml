@@ -4,11 +4,21 @@ on:
   workflow_dispatch:
 
   schedule:
+    # Během obchodních hodin USA každých 30 minut (13:00–21:30 UTC,
+    # pokryje letní i zimní čas; mimo seanci Yahoo vrací poslední zavření).
+    - cron: "*/30 13-21 * * 1-5"
+    # Po zavření trhu: oficiální zavírací hodnota dne.
+    - cron: "30 22 * * 1-5"
+    # Ráno: nové měsíční údaje z FRED (peněžní zásoba).
     - cron: "30 5 * * 2-6"
-    - cron: "30 9 * * 2-6"
 
 permissions:
   contents: write
+
+# Dva běhy najednou by se při ukládání potkaly; další počká.
+concurrency:
+  group: update-valuation
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -40,4 +50,6 @@ jobs:
             exit 0
           fi
           git commit -m "Automatická aktualizace valuace"
+          # Jiné workflow (VIX, sazby, ...) ukládají do stejné větve.
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
