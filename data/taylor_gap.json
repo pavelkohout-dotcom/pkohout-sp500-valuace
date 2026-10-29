@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "date": "2026-08-01",
-  "base_date": "2025-08-01",
-  "pce_index": 131.579,
-  "pce_index_year_ago": 127.229,
-  "inflation_yoy": 3.419031824505425,
-  "fedfunds": 3.63,
-  "taylor_rate": 6.128547736758138,
-  "value": -2.4985477367581383,
+  "date": "2026-09-01",
+  "base_date": "2025-09-01",
+  "pce_index": 132.257,
+  "pce_index_year_ago": 127.601,
+  "inflation_yoy": 3.648874225123633,
+  "fedfunds": 3.75,
+  "taylor_rate": 6.473311337685449,
+  "value": -2.723311337685449,
   "neutral_real_rate": 2,
   "inflation_target": 2,
   "output_gap_assumption": 0,
@@ -15,5 +15,5 @@
     "inflation": "https://fred.stlouisfed.org/series/PCEPI",
     "rate": "https://fred.stlouisfed.org/series/FEDFUNDS"
   },
-  "generated_utc": "2026-10-22T12:41:16+00:00"
+  "generated_utc": "2026-10-29T20:37:35+00:00"
 }
