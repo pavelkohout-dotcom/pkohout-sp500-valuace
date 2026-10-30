@@ -3,12 +3,12 @@
   "metric": "sp500_eps_beat_rate",
   "provider": "FactSet Earnings Insight",
   "quarter": "2026-Q3",
-  "value": 83,
-  "reporting_percent": 24,
+  "value": 82,
+  "reporting_percent": 60,
   "reporting_relation": "eq",
-  "report_date": "2026-10-23",
-  "source": "https://advantage.factset.com/hubfs/Website/Resources%20Section/Research%20Desk/Earnings%20Insight/EarningsInsight_102326.pdf",
+  "report_date": "2026-10-30",
+  "source": "https://advantage.factset.com/hubfs/Website/Resources%20Section/Research%20Desk/Earnings%20Insight/EarningsInsight_103026.pdf",
   "source_page": 1,
   "status": "partial",
-  "generated_utc": "2026-10-23T23:07:32+00:00"
+  "generated_utc": "2026-10-30T23:43:52+00:00"
 }
