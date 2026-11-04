@@ -1,0 +1,26 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const root=path.join(__dirname,'..');
+let now=Date.parse('2026-11-04T18:30:00Z');
+class Clock extends Date{constructor(...a){super(...(a.length?a:[now]));}static now(){return now;}}
+const els={},timers=[],events={};
+const ctx=vm.createContext({Date:Clock,Intl,URL,AbortController,console,setTimeout,clearTimeout,setInterval:(f,ms)=>timers.push({f,ms}),localStorage:{getItem(){return null},setItem(){}},document:{hidden:false,getElementById:id=>els[id]??={hidden:true,value:'',textContent:'',innerHTML:'',showModal(){},close(){}},querySelectorAll:()=>[],addEventListener:(k,f)=>events[k]=f},fetch:async()=>{throw Error('offline')}});
+vm.runInContext(fs.readFileSync(path.join(root,'investicni_pristrojova_deska.html'),'utf8').match(/<script>\s*([\s\S]*?)<\/script>/)[1],ctx);
+const run=s=>vm.runInContext(s,ctx);
+let base=JSON.parse(fs.readFileSync(path.join(root,'data/mzm_ratio.json')));
+let sp={series_id:'SP500',symbol:'^GSPC',frequency:'intraday',value:7700,date:'2026-11-04',quote_time:'2026-11-04T18:28:00Z'};
+let vix={...sp,series_id:'VIX',symbol:'^VIX',value:16.8,quote_time:'2026-11-04T18:15:00Z'};
+(async()=>{
+ await new Promise(r=>setTimeout(r,20));
+ ctx.fetch=async u=>({ok:true,json:async()=>String(u).includes('sp500_intraday')?sp:String(u).includes('vix_intraday')?vix:String(u).includes('vixcls')?{series_id:'VIXCLS',value:20.83,date:'2026-11-04'}:base});
+ await run('loadEquity()');assert.equal(run('state.equity.sp500'),7700);
+ const want=(7700/base.current_snapshot.foreign_adjusted_mzm/.15-1)*100;
+ assert.ok(Math.abs(run('state.equity.value')-want)<1e-8);assert.match(run('displayDate(state.equity)'),/18:28|13:28/);
+ await run('loadRisk()');assert.equal(run('state.risk.value'),16.8);assert.equal(run('state.risk.frequency'),'intraday');
+ sp={...sp,value:7750,quote_time:'2026-11-04T18:29:00Z'};await run('loadEquity()');assert.equal(run('state.equity.sp500'),7750);
+ sp={...sp,value:7600,quote_time:'2026-11-04T18:20:00Z'};await run('loadEquity()');assert.equal(run('state.equity.sp500'),7750);
+ ctx.fetch=async()=>{throw Error('offline')};await run('loadEquity()');assert.equal(run('state.equity.sp500'),7750);
+ now+=31*60000;assert.equal(run('stale(state.equity)'),true);assert.match(run('displayDate(state.equity)'),/ZASTARALÁ/);
+ ctx.input={...sp,symbol:'SPY'};assert.throws(()=>run('parseSp500(input)'));
+ assert.ok(timers.some(t=>t.ms===60000&&String(t.f).includes('loadEquity')));assert.ok(String(events.visibilitychange).includes('loadEquity'));
+ console.log('PASS: same-day VIX beats daily fallback; equity recomputes with live index and MZM, updates, never regresses, retains offline, marks stale, refreshes on timer/visibility');
+})().catch(e=>{console.error(e);process.exitCode=1});

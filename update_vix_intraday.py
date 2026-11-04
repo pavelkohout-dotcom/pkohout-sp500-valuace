@@ -13,13 +13,15 @@ SOURCE = 'https://finance.yahoo.com/quote/%5EVIX/'
 NY = ZoneInfo('America/New_York')
 
 
-def parse_quote(payload, now=None):
+def parse_quote(payload, now=None, symbol="^VIX"):
+    if symbol not in ("^VIX", "^GSPC"):
+        raise ValueError("Unsupported index")
     now = now or datetime.now(timezone.utc)
     chart = payload['chart']
     if chart.get('error'):
         raise ValueError('Provider error')
     meta = chart['result'][0]['meta']
-    if meta.get('symbol') != '^VIX' or meta.get('instrumentType') != 'INDEX':
+    if meta.get('symbol') != symbol or meta.get('instrumentType') != 'INDEX':
         raise ValueError('Expected VIX spot index')
     value, stamp = meta.get('regularMarketPrice'), meta.get('regularMarketTime')
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value <= 0:
@@ -29,52 +31,52 @@ def parse_quote(payload, now=None):
     quoted = datetime.fromtimestamp(stamp, timezone.utc)
     if (quoted - now).total_seconds() > 60:
         raise ValueError('Future quote timestamp')
-    return {'schema_version': 1, 'series_id': 'VIX', 'symbol': '^VIX',
+    return {'schema_version': 1, 'series_id': 'VIX' if symbol == '^VIX' else 'SP500', 'symbol': symbol,
             'value': value, 'date': quoted.astimezone(NY).date().isoformat(),
             'quote_time': quoted.isoformat(timespec='seconds'),
-            'source': SOURCE, 'provider': 'Yahoo Finance / Cboe',
-            'frequency': 'intraday', 'delay_minutes': 15}
+            'source': SOURCE if symbol == '^VIX' else 'https://finance.yahoo.com/quote/%5EGSPC/', 'provider': 'Yahoo Finance',
+            'frequency': 'intraday', 'delay_minutes': 15 if symbol == '^VIX' else None}
 
 
-def download(now=None):
+def download(now=None, symbol="^VIX"):
     # Unofficial endpoint: may throttle or change. Daily FRED remains independent.
     for host in ('query1.finance.yahoo.com', 'query2.finance.yahoo.com'):
         try:
-            request = Request(f'https://{host}/v8/finance/chart/%5EVIX?interval=1m&range=1d',
+            request = Request(f'https://{host}/v8/finance/chart/{symbol.replace(chr(94), chr(37)+"5E")}?interval=1m&range=1d',
                               headers={'User-Agent': 'Mozilla/5.0', 'Accept': 'application/json'})
             with urlopen(request, timeout=15) as response:
-                return parse_quote(json.load(response), now)
+                return parse_quote(json.load(response), now, symbol)
         except Exception:
             continue
     raise RuntimeError('Yahoo VIX unavailable; retaining last observation')
 
 
-def validate_saved(data, now):
-    if data.get('series_id') != 'VIX' or data.get('frequency') != 'intraday':
+def validate_saved(data, now, symbol="^VIX"):
+    if data.get('series_id') != ('VIX' if symbol == '^VIX' else 'SP500') or data.get('frequency') != 'intraday':
         raise ValueError('Invalid saved series')
     stamp = datetime.fromisoformat(data['quote_time'].replace('Z', '+00:00'))
     if stamp.tzinfo is None:
         raise ValueError('Missing timezone')
-    return parse_quote({'chart': {'result': [{'meta': {'symbol': '^VIX',
+    return parse_quote({'chart': {'result': [{'meta': {'symbol': symbol,
         'instrumentType': 'INDEX', 'regularMarketPrice': data['value'],
-        'regularMarketTime': stamp.timestamp()}}]}}, now)
+        'regularMarketTime': stamp.timestamp()}}]}}, now, symbol)
 
 
-def publish(quote, output=OUTPUT, now=None):
+def publish(quote, output=OUTPUT, now=None, symbol="^VIX"):
     now = now or datetime.now(timezone.utc)
     old = None
     try:
-        old = validate_saved(json.loads(output.read_text()), now)
+        old = validate_saved(json.loads(output.read_text()), now, symbol)
     except (OSError, ValueError, KeyError, TypeError, OverflowError):
         pass
     if quote is not None:
-        quote = validate_saved(quote, now)
+        quote = validate_saved(quote, now, symbol)
     if old and (quote is None or old['quote_time'] > quote['quote_time']):
         quote = old
         status = 'retained'
     else:
         status = 'ok' if quote else 'unavailable'
-    payload = dict(quote or {'schema_version': 1, 'series_id': 'VIX', 'value': None},
+    payload = dict(quote or {'schema_version': 1, 'series_id': 'VIX' if symbol == '^VIX' else 'SP500', 'value': None},
                    fetch_status=status, checked_at=now.isoformat(timespec='seconds'))
     output.parent.mkdir(parents=True, exist_ok=True)
     temp = output.with_suffix('.json.tmp')

@@ -4,11 +4,11 @@
 
 - Primární zdroj: Yahoo Finance, spot index **^VIX**, nikoli VIX futures ani ETF. Používá cenu `regularMarketPrice` a její `regularMarketTime` z chart endpointu. Endpoint není garantované veřejné API a může vracet chyby nebo omezovat požadavky.
 - Yahoo uvádí pro Cboe Indices zpoždění **15 minut**: https://help.yahoo.com/kb/finance/article-exchanges-data-delays-sln2310.html
-- Server: GitHub Actions každých **5 minut**, pondělí–pátek 13–22 UTC (pokrývá běžnou americkou seanci i zpožděný závěr v EST/EDT). Plánování GitHubu je best effort; zpoždění přenosu a běhu se přičítá ke zpoždění zdroje. Není to realtime feed.
+- Server: běžící GitHub Actions sběrač kontroluje VIX a S&P 500 každých **5 minut**. Podrobnosti nového rozvrhu a omezení jsou v `INTRADAY_REFRESH.md`. Plánování GitHubu je best effort; zpoždění přenosu a běhu se přičítá ke zpoždění zdroje. Není to realtime feed.
 - Prohlížeč: kontrola JSON každých **60 sekund**, při otevření, ruční obnově a návratu na kartu. Stáří se přepočítává každých **15 sekund**. Skrytá karta neprovádí pravidelné kontroly.
 - Čas **ET** pochází z kotace a respektuje zimní/letní čas. `checked_at` je oddělený čas serverové kontroly; nikdy nenahrazuje `quote_time`.
 - Stáří nad **30 minut**: viditelné označení ZASTARALÁ KOTACE. Stejné pravidlo platí mimo seanci, o víkendech a svátcích; deska netvrdí, že zná burzovní kalendář nebo že uzavřený trh poskytuje čerstvé kotace.
-- Fallback: poslední platná intradenní kotace v serverovém JSON / paměti / localStorage; denní FRED VIXCLS při absenci kotace nebo pokud má novější datum pozorování. Denní závěr stejného dne je řazen za intradenní kotaci toho dne v časovém pořadí. FRED je vždy označen jako denní fallback, nikdy jako intradenní údaj.
+- Fallback: poslední platná intradenní kotace v serverovém JSON / paměti / localStorage; denní FRED VIXCLS při absenci kotace nebo pokud má novější datum pozorování. Při shodném dni má přednost intradenní záznam s přesným časem. FRED je vždy označen jako denní fallback, nikdy jako intradenní údaj.
 - `data/vixcls.json` a původní denní aktualizace zůstávají zachované. Nový soubor je `data/vix_intraday.json`. Žádný nový API klíč není potřeba.
 - Neplatné, záporné, nulové, budoucí nebo chybně identifikované kotace jsou odmítnuty. Starší odpověď nesmí přepsat novější pozorování. Při úplném výpadku se zachová původní čas; bez dostupné historie se zobrazí nedostupnost.
 
