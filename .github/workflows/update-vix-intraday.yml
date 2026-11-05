@@ -3,20 +3,20 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [update_vix_intraday.py, update_market_intraday.py, .github/workflows/update-vix-intraday.yml]
+    paths: [update_vix_intraday.py, update_market_intraday.py, data/market_calendar.json, .github/workflows/update-vix-intraday.yml]
   schedule:
-    # A running job polls every five minutes. Hourly starts replenish the worker;
-    # scheduling itself is best effort, so the browser still checks quote age.
-    - cron: '7 12-22 * * 1-5'
+    # Backup only: continuation normally uses workflow_dispatch, not cron.
+    - cron: '17 */4 * * *'
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: update-vix-intraday
   cancel-in-progress: false
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
+    timeout-minutes: 320
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,4 +28,20 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - name: Poll and publish during US trading
-        run: python -u update_market_intraday.py --watch --publish
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          duration=300
+          if [ "$EVENT_NAME" = "push" ]; then duration=1; fi
+          python -u update_market_intraday.py --watch --publish --duration-minutes "$duration"
+      - name: Hand off to the next bounded worker
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          for attempt in 1 2 3; do
+            if gh workflow run update-vix-intraday.yml --ref main; then exit 0; fi
+            sleep 10
+          done
+          exit 1

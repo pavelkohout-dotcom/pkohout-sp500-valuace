@@ -1,15 +1,17 @@
-# Oprava průběžné aktualizace (4. listopadu 2026)
+# Intraday refresh — 5 November 2026
 
-Původní plán GitHub Actions byl nastaven na pět minut, ale skutečné běhy měly dlouhé mezery. VIX JSON se po 00:34 UTC neobnovil a obsahoval závěr předchozího dne. Samotné minutové načítání tohoto JSON v prohlížeči nemohlo situaci napravit. Valuační JSON byl rovněž starší a deska jej navíc automaticky nenačítala.
+VIX and S&P 500 are collected at most once per 30 minutes during the regular US equity session and for one hour after close, allowing the delayed final VIX observation to arrive. Quote timestamps are never replaced by download timestamps. Browser checks remain once per minute; they do not query Yahoo directly.
 
-## Nové chování
+A bounded worker stays alive for 300 minutes, including overnight/weekends, checking its calendar once per minute. On successful completion it explicitly dispatches its successor using the repository GITHUB_TOKEN (actions:write). A push bootstrap lasts one minute so handoff can be verified. Concurrency serializes workers; the four-hour cron is a recovery mechanism, not the primary clock. Existing checked_at prevents duplicate market downloads across handoffs. This intentionally occupies a runner even when the market is closed; it does not require a running user computer or a personal token. Disable the workflow in Actions to stop the chain.
 
-- Workflow `update-vix-intraday.yml` spustí omezený běžící sběrač pro VIX a S&P 500. Ten načítá a publikuje oba indexy každých 300 sekund. Jedna úloha běží nejvýše 330 minut, během pracovních dní mezi 12:00 a 22:35 UTC. Každou hodinu v :07 je naplánován další start; souběžné běhy jsou serializované. Mimo okno se provede jedna kontrola a proces skončí.
-- GitHub stále negarantuje čas zahájení úlohy. Zpoždění začátku, výpadek runneru nebo zdroje mohou aktualizace přerušit; UI proto nadále posuzuje skutečný čas kotace. Běžící sběrač odstraní závislost každého jednotlivého pětiminutového odběru na samostatném cron spuštění.
-- `data/vix_intraday.json` obsahuje VIX, `data/sp500_intraday.json` průběžný S&P 500. Každý má vlastní čas kotace a čas kontroly. Kontrola nikdy neposune čas starého pozorování. Neplatné nebo starší kotace nepřepíšou novější.
-- Oba ciferníky se v otevřené viditelné kartě obnovují každých 60 sekund, po ruční obnově i po návratu na kartu. Skrytá karta neprovádí periodické odběry.
-- Equity Valuation používá aktuální měnový základ z `mzm_ratio.json` a průběžný S&P 500: `(S&P 500 / foreign_adjusted_mzm / 0.15 − 1) × 100`. Měsíční měnová data se neinterpolují. U valuace je vidět čas ceny a v dialogu datum měnového základu.
-- Při stejném datu pozorování má pro VIX přednost intradenní záznam s přesným časem před denním FRED; při chybě zůstává poslední platný záznam. Starší datum nemůže přepsat novější.
-- U obou kotací se po 30 minutách objeví označení zastaralých dat. VIX zůstává zdrojem zpožděný přibližně 15 minut; minutová obnova neznamená realtime přenos.
+GitHub service/runner outages can still interrupt the chain. Failures are reported by Actions; a failed collector is not silently marked successful and does not immediately self-retry forever. Cron can recover later. This is not a guaranteed-availability market data service.
 
-Ověření: testy obou indexových parserů, opakování sběru, časového okna, výběru VIX při shodném dni, živého přepočtu valuace, odmítnutí starší ceny, výpadku, stale stavu a automatické obnovy. Zachovány regresní testy VIX a EPS panelu.
+Freshness budget is 60 minutes during trading: 30-minute collection, approximately 15-minute VIX source delay, and delivery allowance. During the first hour after open, a previous-session quote is explicitly labelled waiting for the first quote. Outside the session plus final-delivery window, only a quote at or after the latest session close is labelled market closed. Missing final quotes remain stale. Holidays and early closes follow the bundled official NYSE 2026–2028 calendar; unknown future dates fail conservatively. Unexpected exchange closures require a calendar update.
+
+Equity valuation uses the latest S&P 500 observation and the latest validated MZM denominator, preserving the 0.15 reference ratio. MZM remains a slower economic series.
+
+The public Wix page embeds its own HTML copy. Repository/data updates do not replace that copy. Replace the HTML embed with investicni_pristrojova_deska.html and publish Wix to activate new labels.
+
+References:
+- https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow
+- https://www.nyse.com/trade/hours-calendars

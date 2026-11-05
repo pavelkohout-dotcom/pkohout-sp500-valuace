@@ -19,7 +19,7 @@ const parse=d=>{context.input=d;return run('parseVix(input)')};
  assert.equal(parse(quote()).quoteTime,'2026-11-03T15:45:00.000Z');
  for(const d of [quote('2026-11-03T17:00:00Z'),quote('garbage'),quote('2026-11-03T15:45:00Z',null),{...quote(),symbol:'VIXY'},{...quote(),quote_time:'2026-11-03T15:45:00'}])assert.throws(()=>parse(d));
  context.v=parse(quote());assert.equal(run('riskStale(v)'),false);
- now+=16*60000;assert.equal(run('riskStale(v)'),true);assert.match(run('riskStatus(v)'),/ZASTARALÁ/);
+ now+=46*60000;assert.equal(run('riskStale(v)'),true);assert.match(run('riskStatus(v)'),/ZASTARALÁ/);
  now=Date.parse('2026-11-03T16:00:00Z');
  let live=quote(),daily={series_id:'VIXCLS',value:19,date:'2026-11-02'};
  context.fetch=async url=>({ok:true,json:async()=>String(url).includes('vix_intraday')?live:daily});
