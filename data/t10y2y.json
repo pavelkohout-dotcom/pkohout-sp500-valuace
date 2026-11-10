@@ -1,10 +1,10 @@
 {
   "series_id": "T10Y2Y",
-  "value": 0.35,
-  "date": "2026-11-06",
+  "value": 0.32,
+  "date": "2026-11-09",
   "source": "https://fred.stlouisfed.org/series/T10Y2Y",
   "attribution": "Federal Reserve Bank of St. Louis (FRED)",
   "frequency": "Daily",
   "units": "Percent",
-  "generated_utc": "2026-11-07T02:51:51+00:00"
+  "generated_utc": "2026-11-10T04:38:38+00:00"
 }
