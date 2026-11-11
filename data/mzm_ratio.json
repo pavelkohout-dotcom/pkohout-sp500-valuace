@@ -1,7 +1,7 @@
 {
   "schema_version": 5,
   "status": "ok",
-  "generated_utc": "2026-11-11T12:53:59Z",
+  "generated_utc": "2026-11-11T20:01:01Z",
   "series_name": "S&P 500 / Foreign-adjusted MZM proxy index",
   "history_start": "1959-01-31",
   "history_end": "2026-09-30",
@@ -18,12 +18,12 @@
   "five_year_monthly_average": 110.421639,
   "current_snapshot_appended_to_chart": true,
   "current_snapshot": {
-    "sp500_date": "2026-11-10",
-    "sp500": 7520.93,
+    "sp500_date": "2026-11-11",
+    "sp500": 7626.700195,
     "foreign_adjusted_mzm_date": "2026-09-30",
     "foreign_adjusted_mzm": 35624.679509,
-    "raw_ratio": 0.211115724,
-    "index": 140.743816,
+    "raw_ratio": 0.214084738,
+    "index": 142.723159,
     "mixed_vintage": true
   },
   "history": [
@@ -13038,12 +13038,12 @@
       "kind": "matched_monthly"
     },
     {
-      "date": "2026-11-10",
-      "sp500": 7520.93,
+      "date": "2026-11-11",
+      "sp500": 7626.700195,
       "foreign_adjusted_mzm_date": "2026-09-30",
       "foreign_adjusted_mzm": 35624.679509,
-      "raw_ratio": 0.211115724,
-      "index": 140.743816,
+      "raw_ratio": 0.214084738,
+      "index": 142.723159,
       "kind": "current_snapshot"
     }
   ],
@@ -13111,7 +13111,7 @@
   },
   "data_sources": {
     "sp500_historical": "sp500w.xlsx",
-    "sp500_current": "FRED SP500",
+    "sp500_current": "Yahoo Finance ^GSPC + FRED SP500",
     "money": "FRED",
     "tb3ms": "FRED TB3MS (3-Month Treasury Bill, monthly average, % p.a.)",
     "sp500_priority": "FRED where available; sp500w.xlsx fills earlier history."
