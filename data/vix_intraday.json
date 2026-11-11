@@ -4,11 +4,11 @@
   "symbol": "^VIX",
   "value": 17.78,
   "date": "2026-11-11",
-  "quote_time": "2026-11-11T16:45:46+00:00",
+  "quote_time": "2026-11-11T17:15:31+00:00",
   "source": "https://finance.yahoo.com/quote/%5EVIX/",
   "provider": "Yahoo Finance",
   "frequency": "intraday",
   "delay_minutes": 15,
   "fetch_status": "ok",
-  "checked_at": "2026-11-11T17:00:48+00:00"
+  "checked_at": "2026-11-11T17:30:51+00:00"
 }
