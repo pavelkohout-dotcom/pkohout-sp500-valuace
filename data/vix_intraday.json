@@ -2,13 +2,13 @@
   "schema_version": 1,
   "series_id": "VIX",
   "symbol": "^VIX",
-  "value": 18.77,
+  "value": 18.92,
   "date": "2026-11-12",
-  "quote_time": "2026-11-12T20:16:31+00:00",
+  "quote_time": "2026-11-12T20:46:31+00:00",
   "source": "https://finance.yahoo.com/quote/%5EVIX/",
   "provider": "Yahoo Finance",
   "frequency": "intraday",
   "delay_minutes": 15,
   "fetch_status": "ok",
-  "checked_at": "2026-11-12T20:31:42+00:00"
+  "checked_at": "2026-11-12T21:01:45+00:00"
 }
