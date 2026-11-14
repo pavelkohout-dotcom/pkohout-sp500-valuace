@@ -4,11 +4,11 @@
   "provider": "FactSet Earnings Insight",
   "quarter": "2026-Q3",
   "value": 84,
-  "reporting_percent": 88,
+  "reporting_percent": 91,
   "reporting_relation": "eq",
-  "report_date": "2026-11-06",
-  "source": "https://advantage.factset.com/hubfs/Website/Resources%20Section/Research%20Desk/Earnings%20Insight/EarningsInsight_110626.pdf",
+  "report_date": "2026-11-13",
+  "source": "https://advantage.factset.com/hubfs/Website/Resources%20Section/Research%20Desk/Earnings%20Insight/EarningsInsight_111326.pdf",
   "source_page": 1,
   "status": "partial",
-  "generated_utc": "2026-11-07T00:06:19+00:00"
+  "generated_utc": "2026-11-14T00:52:18+00:00"
 }
