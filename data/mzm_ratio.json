@@ -1,7 +1,7 @@
 {
   "schema_version": 5,
   "status": "ok",
-  "generated_utc": "2026-11-16T22:44:52Z",
+  "generated_utc": "2026-11-17T04:41:50Z",
   "series_name": "S&P 500 / Foreign-adjusted MZM proxy index",
   "history_start": "1959-01-31",
   "history_end": "2026-09-30",
@@ -11,19 +11,19 @@
     "formula": "100 * raw_ratio / 0.15"
   },
   "averages": {
-    "five_year": 110.421639,
-    "ten_year": 100.307502,
-    "full_history": 109.814822
+    "five_year": 110.434218,
+    "ten_year": 100.360196,
+    "full_history": 109.822535
   },
-  "five_year_monthly_average": 110.421639,
+  "five_year_monthly_average": 110.434218,
   "current_snapshot_appended_to_chart": true,
   "current_snapshot": {
     "sp500_date": "2026-11-16",
-    "sp500": 7416.589844,
+    "sp500": 7416.59,
     "foreign_adjusted_mzm_date": "2026-09-30",
     "foreign_adjusted_mzm": 35624.679509,
-    "raw_ratio": 0.208186851,
-    "index": 138.791234,
+    "raw_ratio": 0.208186855,
+    "index": 138.791237,
     "mixed_vintage": true
   },
   "history": [
@@ -5581,42 +5581,42 @@
     },
     {
       "date": "2016-11-30",
-      "sp500": 2198.81,
+      "sp500": 2213.35,
       "foreign_adjusted_mzm": 18033.769895,
-      "raw_ratio": 0.121927363,
-      "index": 81.284908,
+      "raw_ratio": 0.122733628,
+      "index": 81.822418,
       "kind": "matched_monthly"
     },
     {
       "date": "2016-12-31",
-      "sp500": 2238.83,
+      "sp500": 2263.79,
       "foreign_adjusted_mzm": 18182.781079,
-      "raw_ratio": 0.123129129,
-      "index": 82.086086,
+      "raw_ratio": 0.124501856,
+      "index": 83.001238,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-01-31",
-      "sp500": 2278.87,
+      "sp500": 2294.69,
       "foreign_adjusted_mzm": 18211.817315,
-      "raw_ratio": 0.125131389,
-      "index": 83.420926,
+      "raw_ratio": 0.126000056,
+      "index": 84.000037,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-02-28",
-      "sp500": 2363.64,
+      "sp500": 2367.34,
       "foreign_adjusted_mzm": 18247.349724,
-      "raw_ratio": 0.129533331,
-      "index": 86.355554,
+      "raw_ratio": 0.129736101,
+      "index": 86.490734,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-03-31",
-      "sp500": 2362.72,
+      "sp500": 2343.98,
       "foreign_adjusted_mzm": 18474.530337,
-      "raw_ratio": 0.127890667,
-      "index": 85.260444,
+      "raw_ratio": 0.126876297,
+      "index": 84.584198,
       "kind": "matched_monthly"
     },
     {
@@ -5629,58 +5629,58 @@
     },
     {
       "date": "2017-05-31",
-      "sp500": 2411.8,
+      "sp500": 2415.82,
       "foreign_adjusted_mzm": 18354.912832,
-      "raw_ratio": 0.131398063,
-      "index": 87.598709,
+      "raw_ratio": 0.131617078,
+      "index": 87.744719,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-06-30",
-      "sp500": 2423.41,
+      "sp500": 2438.3,
       "foreign_adjusted_mzm": 18410.749302,
-      "raw_ratio": 0.131630167,
-      "index": 87.753444,
+      "raw_ratio": 0.132438933,
+      "index": 88.292622,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-07-31",
-      "sp500": 2470.3,
+      "sp500": 2472.1,
       "foreign_adjusted_mzm": 18743.006685,
-      "raw_ratio": 0.131798491,
-      "index": 87.865661,
+      "raw_ratio": 0.131894527,
+      "index": 87.929685,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-08-31",
-      "sp500": 2471.65,
+      "sp500": 2443.05,
       "foreign_adjusted_mzm": 18809.850251,
-      "raw_ratio": 0.131401897,
-      "index": 87.601264,
+      "raw_ratio": 0.129881417,
+      "index": 86.587611,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-09-30",
-      "sp500": 2519.36,
+      "sp500": 2502.22,
       "foreign_adjusted_mzm": 18853.064806,
-      "raw_ratio": 0.133631323,
-      "index": 89.087549,
+      "raw_ratio": 0.132722187,
+      "index": 88.481458,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-10-31",
-      "sp500": 2575.26,
+      "sp500": 2581.07,
       "foreign_adjusted_mzm": 18990.305684,
-      "raw_ratio": 0.135609191,
-      "index": 90.406128,
+      "raw_ratio": 0.135915137,
+      "index": 90.610091,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-11-30",
-      "sp500": 2647.58,
+      "sp500": 2602.42,
       "foreign_adjusted_mzm": 19075.469476,
-      "raw_ratio": 0.138795011,
-      "index": 92.530007,
+      "raw_ratio": 0.136427573,
+      "index": 90.951715,
       "kind": "matched_monthly"
     },
     {
@@ -5693,66 +5693,66 @@
     },
     {
       "date": "2018-01-31",
-      "sp500": 2823.81,
+      "sp500": 2872.87,
       "foreign_adjusted_mzm": 19142.823811,
-      "raw_ratio": 0.14751272,
-      "index": 98.341813,
+      "raw_ratio": 0.15007556,
+      "index": 100.050373,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-02-28",
-      "sp500": 2713.83,
+      "sp500": 2747.3,
       "foreign_adjusted_mzm": 19110.767212,
-      "raw_ratio": 0.142005288,
-      "index": 94.670192,
+      "raw_ratio": 0.143756657,
+      "index": 95.837771,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-03-31",
-      "sp500": 2640.87,
+      "sp500": 2588.26,
       "foreign_adjusted_mzm": 19327.941169,
-      "raw_ratio": 0.136634832,
-      "index": 91.089888,
+      "raw_ratio": 0.133912866,
+      "index": 89.275244,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-04-30",
-      "sp500": 2648.05,
+      "sp500": 2669.91,
       "foreign_adjusted_mzm": 19311.172221,
-      "raw_ratio": 0.137125285,
-      "index": 91.416857,
+      "raw_ratio": 0.138257272,
+      "index": 92.171515,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-05-31",
-      "sp500": 2705.27,
+      "sp500": 2721.33,
       "foreign_adjusted_mzm": 19162.842455,
-      "raw_ratio": 0.141172689,
-      "index": 94.115126,
+      "raw_ratio": 0.142010769,
+      "index": 94.673846,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-06-30",
-      "sp500": 2718.37,
+      "sp500": 2754.88,
       "foreign_adjusted_mzm": 19250.956648,
-      "raw_ratio": 0.141207009,
-      "index": 94.138006,
+      "raw_ratio": 0.143103538,
+      "index": 95.402358,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-07-31",
-      "sp500": 2816.29,
+      "sp500": 2818.82,
       "foreign_adjusted_mzm": 19325.54219,
-      "raw_ratio": 0.1457289,
-      "index": 97.1526,
+      "raw_ratio": 0.145859815,
+      "index": 97.239876,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-08-31",
-      "sp500": 2901.52,
+      "sp500": 2874.69,
       "foreign_adjusted_mzm": 19367.939456,
-      "raw_ratio": 0.149810464,
-      "index": 99.873643,
+      "raw_ratio": 0.148425185,
+      "index": 98.950123,
       "kind": "matched_monthly"
     },
     {
@@ -5765,42 +5765,42 @@
     },
     {
       "date": "2018-10-31",
-      "sp500": 2711.74,
+      "sp500": 2658.69,
       "foreign_adjusted_mzm": 19665.919496,
-      "raw_ratio": 0.137890323,
-      "index": 91.926882,
+      "raw_ratio": 0.135192763,
+      "index": 90.128509,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-11-30",
-      "sp500": 2760.17,
+      "sp500": 2632.56,
       "foreign_adjusted_mzm": 19692.212213,
-      "raw_ratio": 0.140165562,
-      "index": 93.443708,
+      "raw_ratio": 0.133685336,
+      "index": 89.123557,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-12-31",
-      "sp500": 2506.85,
+      "sp500": 2485.74,
       "foreign_adjusted_mzm": 19899.505516,
-      "raw_ratio": 0.125975492,
-      "index": 83.983661,
+      "raw_ratio": 0.124914662,
+      "index": 83.276441,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-01-31",
-      "sp500": 2704.1,
+      "sp500": 2664.76,
       "foreign_adjusted_mzm": 19888.048282,
-      "raw_ratio": 0.135966082,
-      "index": 90.644055,
+      "raw_ratio": 0.133988009,
+      "index": 89.32534,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-02-28",
-      "sp500": 2784.49,
+      "sp500": 2792.67,
       "foreign_adjusted_mzm": 19834.738666,
-      "raw_ratio": 0.140384507,
-      "index": 93.589671,
+      "raw_ratio": 0.140796914,
+      "index": 93.86461,
       "kind": "matched_monthly"
     },
     {
@@ -5813,18 +5813,18 @@
     },
     {
       "date": "2019-04-30",
-      "sp500": 2945.83,
+      "sp500": 2939.88,
       "foreign_adjusted_mzm": 20269.315491,
-      "raw_ratio": 0.145334459,
-      "index": 96.889639,
+      "raw_ratio": 0.145040912,
+      "index": 96.693941,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-05-31",
-      "sp500": 2752.06,
+      "sp500": 2826.06,
       "foreign_adjusted_mzm": 20180.387809,
-      "raw_ratio": 0.136372999,
-      "index": 90.915332,
+      "raw_ratio": 0.140039925,
+      "index": 93.35995,
       "kind": "matched_monthly"
     },
     {
@@ -5837,82 +5837,82 @@
     },
     {
       "date": "2019-07-31",
-      "sp500": 2980.38,
+      "sp500": 3025.86,
       "foreign_adjusted_mzm": 20728.071071,
-      "raw_ratio": 0.143784725,
-      "index": 95.856483,
+      "raw_ratio": 0.145978851,
+      "index": 97.319234,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-08-31",
-      "sp500": 2926.46,
+      "sp500": 2847.11,
       "foreign_adjusted_mzm": 20803.645611,
-      "raw_ratio": 0.140670537,
-      "index": 93.780358,
+      "raw_ratio": 0.136856302,
+      "index": 91.237534,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-09-30",
-      "sp500": 2976.74,
+      "sp500": 2961.79,
       "foreign_adjusted_mzm": 20894.537605,
-      "raw_ratio": 0.142464986,
-      "index": 94.976657,
+      "raw_ratio": 0.141749488,
+      "index": 94.499658,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-10-31",
-      "sp500": 3037.56,
+      "sp500": 3022.55,
       "foreign_adjusted_mzm": 21271.128196,
-      "raw_ratio": 0.142802017,
-      "index": 95.201344,
+      "raw_ratio": 0.142096365,
+      "index": 94.73091,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-11-30",
-      "sp500": 3140.98,
+      "sp500": 3110.29,
       "foreign_adjusted_mzm": 21447.173343,
-      "raw_ratio": 0.146451933,
-      "index": 97.634622,
+      "raw_ratio": 0.145020976,
+      "index": 96.68065,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-12-31",
-      "sp500": 3230.78,
+      "sp500": 3240.02,
       "foreign_adjusted_mzm": 21659.086579,
-      "raw_ratio": 0.149165109,
-      "index": 99.443406,
+      "raw_ratio": 0.149591719,
+      "index": 99.727813,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-01-31",
-      "sp500": 3225.52,
+      "sp500": 3295.47,
       "foreign_adjusted_mzm": 22812.777852,
-      "raw_ratio": 0.141390935,
-      "index": 94.260624,
+      "raw_ratio": 0.144457199,
+      "index": 96.3048,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-02-29",
-      "sp500": 2954.22,
+      "sp500": 3337.75,
       "foreign_adjusted_mzm": 22782.666251,
-      "raw_ratio": 0.129669634,
-      "index": 86.446423,
+      "raw_ratio": 0.146503924,
+      "index": 97.669283,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-03-31",
-      "sp500": 2584.59,
+      "sp500": 2541.47,
       "foreign_adjusted_mzm": 23574.409141,
-      "raw_ratio": 0.10963541,
-      "index": 73.090273,
+      "raw_ratio": 0.107806307,
+      "index": 71.870872,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-04-30",
-      "sp500": 2912.43,
+      "sp500": 2836.74,
       "foreign_adjusted_mzm": 25219.38252,
-      "raw_ratio": 0.115483795,
-      "index": 76.989197,
+      "raw_ratio": 0.112482532,
+      "index": 74.988355,
       "kind": "matched_monthly"
     },
     {
@@ -5925,58 +5925,58 @@
     },
     {
       "date": "2020-06-30",
-      "sp500": 3100.29,
+      "sp500": 3009.05,
       "foreign_adjusted_mzm": 26489.68541,
-      "raw_ratio": 0.11703763,
-      "index": 78.025087,
+      "raw_ratio": 0.11359327,
+      "index": 75.728847,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-07-31",
-      "sp500": 3271.12,
+      "sp500": 3215.63,
       "foreign_adjusted_mzm": 26504.640128,
-      "raw_ratio": 0.12341688,
-      "index": 82.27792,
+      "raw_ratio": 0.121323285,
+      "index": 80.88219,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-08-31",
-      "sp500": 3500.31,
+      "sp500": 3508.01,
       "foreign_adjusted_mzm": 26640.903917,
-      "raw_ratio": 0.13138856,
-      "index": 87.592373,
+      "raw_ratio": 0.131677589,
+      "index": 87.785059,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-09-30",
-      "sp500": 3363.0,
+      "sp500": 3298.46,
       "foreign_adjusted_mzm": 26971.940241,
-      "raw_ratio": 0.124685135,
-      "index": 83.123423,
+      "raw_ratio": 0.122292277,
+      "index": 81.528185,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-10-31",
-      "sp500": 3269.96,
+      "sp500": 3465.39,
       "foreign_adjusted_mzm": 27209.707481,
-      "raw_ratio": 0.120176228,
-      "index": 80.117485,
+      "raw_ratio": 0.127358591,
+      "index": 84.905727,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-11-30",
-      "sp500": 3621.63,
+      "sp500": 3638.35,
       "foreign_adjusted_mzm": 27617.488846,
-      "raw_ratio": 0.131135384,
-      "index": 87.423589,
+      "raw_ratio": 0.131740797,
+      "index": 87.827198,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-12-31",
-      "sp500": 3756.07,
+      "sp500": 3703.06,
       "foreign_adjusted_mzm": 28023.338208,
-      "raw_ratio": 0.134033639,
-      "index": 89.355759,
+      "raw_ratio": 0.132142002,
+      "index": 88.094668,
       "kind": "matched_monthly"
     },
     {
@@ -5997,18 +5997,18 @@
     },
     {
       "date": "2021-03-31",
-      "sp500": 3972.89,
+      "sp500": 3974.54,
       "foreign_adjusted_mzm": 29311.342469,
-      "raw_ratio": 0.135541045,
-      "index": 90.360697,
+      "raw_ratio": 0.135597338,
+      "index": 90.398225,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-04-30",
-      "sp500": 4181.17,
+      "sp500": 4180.17,
       "foreign_adjusted_mzm": 29732.471337,
-      "raw_ratio": 0.140626386,
-      "index": 93.750924,
+      "raw_ratio": 0.140592753,
+      "index": 93.728502,
       "kind": "matched_monthly"
     },
     {
@@ -6021,34 +6021,34 @@
     },
     {
       "date": "2021-06-30",
-      "sp500": 4297.5,
+      "sp500": 4280.7,
       "foreign_adjusted_mzm": 29997.457955,
-      "raw_ratio": 0.143262139,
-      "index": 95.508093,
+      "raw_ratio": 0.142702092,
+      "index": 95.134728,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-07-31",
-      "sp500": 4395.26,
+      "sp500": 4411.79,
       "foreign_adjusted_mzm": 30251.32414,
-      "raw_ratio": 0.145291491,
-      "index": 96.860994,
+      "raw_ratio": 0.145837914,
+      "index": 97.225276,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-08-31",
-      "sp500": 4522.68,
+      "sp500": 4509.37,
       "foreign_adjusted_mzm": 30563.775056,
-      "raw_ratio": 0.147975176,
-      "index": 98.650117,
+      "raw_ratio": 0.147539693,
+      "index": 98.359796,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-09-30",
-      "sp500": 4307.54,
+      "sp500": 4455.48,
       "foreign_adjusted_mzm": 30833.794367,
-      "raw_ratio": 0.139701911,
-      "index": 93.134607,
+      "raw_ratio": 0.144499893,
+      "index": 96.333262,
       "kind": "matched_monthly"
     },
     {
@@ -6061,66 +6061,66 @@
     },
     {
       "date": "2021-11-30",
-      "sp500": 4567.0,
+      "sp500": 4594.62,
       "foreign_adjusted_mzm": 31848.333645,
-      "raw_ratio": 0.143398397,
-      "index": 95.598932,
+      "raw_ratio": 0.144265633,
+      "index": 96.177088,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-12-31",
-      "sp500": 4766.18,
+      "sp500": 4725.79,
       "foreign_adjusted_mzm": 32277.660231,
-      "raw_ratio": 0.14766188,
-      "index": 98.441254,
+      "raw_ratio": 0.14641055,
+      "index": 97.607034,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-01-31",
-      "sp500": 4515.55,
+      "sp500": 4431.85,
       "foreign_adjusted_mzm": 32002.357842,
-      "raw_ratio": 0.141100541,
-      "index": 94.067027,
+      "raw_ratio": 0.138485109,
+      "index": 92.323406,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-02-28",
-      "sp500": 4373.94,
+      "sp500": 4384.65,
       "foreign_adjusted_mzm": 31953.661431,
-      "raw_ratio": 0.136883844,
-      "index": 91.255896,
+      "raw_ratio": 0.137219017,
+      "index": 91.479344,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-03-31",
-      "sp500": 4530.41,
+      "sp500": 4543.06,
       "foreign_adjusted_mzm": 32305.803829,
-      "raw_ratio": 0.140235173,
-      "index": 93.490116,
+      "raw_ratio": 0.140626744,
+      "index": 93.751163,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-04-30",
-      "sp500": 4131.93,
+      "sp500": 4271.78,
       "foreign_adjusted_mzm": 32286.599214,
-      "raw_ratio": 0.127976625,
-      "index": 85.31775,
+      "raw_ratio": 0.132308143,
+      "index": 88.205429,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-05-31",
-      "sp500": 4132.15,
+      "sp500": 4158.24,
       "foreign_adjusted_mzm": 31879.132861,
-      "raw_ratio": 0.129619272,
-      "index": 86.412848,
+      "raw_ratio": 0.130437676,
+      "index": 86.958451,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-06-30",
-      "sp500": 3785.38,
+      "sp500": 3911.74,
       "foreign_adjusted_mzm": 31849.666515,
-      "raw_ratio": 0.11885148,
-      "index": 79.23432,
+      "raw_ratio": 0.122818868,
+      "index": 81.879246,
       "kind": "matched_monthly"
     },
     {
@@ -6133,66 +6133,66 @@
     },
     {
       "date": "2022-08-31",
-      "sp500": 3955.0,
+      "sp500": 4057.66,
       "foreign_adjusted_mzm": 31646.789479,
-      "raw_ratio": 0.124973183,
-      "index": 83.315455,
+      "raw_ratio": 0.128217114,
+      "index": 85.478076,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-09-30",
-      "sp500": 3585.62,
+      "sp500": 3693.23,
       "foreign_adjusted_mzm": 31467.650418,
-      "raw_ratio": 0.113946226,
-      "index": 75.964151,
+      "raw_ratio": 0.117365928,
+      "index": 78.243952,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-10-31",
-      "sp500": 3871.98,
+      "sp500": 3901.06,
       "foreign_adjusted_mzm": 31332.547027,
-      "raw_ratio": 0.123576931,
-      "index": 82.384621,
+      "raw_ratio": 0.124505039,
+      "index": 83.00336,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-11-30",
-      "sp500": 4080.11,
+      "sp500": 4026.12,
       "foreign_adjusted_mzm": 31228.171346,
-      "raw_ratio": 0.130654785,
-      "index": 87.10319,
+      "raw_ratio": 0.128925897,
+      "index": 85.950598,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-12-31",
-      "sp500": 3839.5,
+      "sp500": 3844.82,
       "foreign_adjusted_mzm": 31128.962779,
-      "raw_ratio": 0.123341726,
-      "index": 82.227817,
+      "raw_ratio": 0.123512628,
+      "index": 82.341752,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-01-31",
-      "sp500": 4076.6,
+      "sp500": 4070.56,
       "foreign_adjusted_mzm": 31478.462076,
-      "raw_ratio": 0.129504421,
-      "index": 86.336281,
+      "raw_ratio": 0.129312544,
+      "index": 86.208362,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-02-28",
-      "sp500": 3970.15,
+      "sp500": 3970.04,
       "foreign_adjusted_mzm": 31149.222315,
-      "raw_ratio": 0.127455831,
-      "index": 84.970554,
+      "raw_ratio": 0.127452299,
+      "index": 84.968199,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-03-31",
-      "sp500": 4109.31,
+      "sp500": 3970.99,
       "foreign_adjusted_mzm": 30841.207131,
-      "raw_ratio": 0.133240894,
-      "index": 88.827262,
+      "raw_ratio": 0.128755985,
+      "index": 85.837323,
       "kind": "matched_monthly"
     },
     {
@@ -6205,58 +6205,58 @@
     },
     {
       "date": "2023-05-31",
-      "sp500": 4179.83,
+      "sp500": 4205.45,
       "foreign_adjusted_mzm": 30305.219329,
-      "raw_ratio": 0.137924427,
-      "index": 91.949618,
+      "raw_ratio": 0.138769826,
+      "index": 92.513217,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-06-30",
-      "sp500": 4450.38,
+      "sp500": 4348.33,
       "foreign_adjusted_mzm": 30210.954355,
-      "raw_ratio": 0.147310143,
-      "index": 98.206762,
+      "raw_ratio": 0.143932229,
+      "index": 95.954819,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-07-31",
-      "sp500": 4588.96,
+      "sp500": 4582.23,
       "foreign_adjusted_mzm": 30455.260305,
-      "raw_ratio": 0.150678732,
-      "index": 100.452488,
+      "raw_ratio": 0.150457752,
+      "index": 100.305168,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-08-31",
-      "sp500": 4507.66,
+      "sp500": 4405.71,
       "foreign_adjusted_mzm": 30304.234943,
-      "raw_ratio": 0.148746867,
-      "index": 99.164578,
+      "raw_ratio": 0.145382651,
+      "index": 96.921767,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-09-30",
-      "sp500": 4288.05,
+      "sp500": 4320.06,
       "foreign_adjusted_mzm": 30183.856172,
-      "raw_ratio": 0.142064353,
-      "index": 94.709569,
+      "raw_ratio": 0.143124854,
+      "index": 95.416569,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-10-31",
-      "sp500": 4193.8,
+      "sp500": 4117.37,
       "foreign_adjusted_mzm": 30319.490014,
-      "raw_ratio": 0.138320269,
-      "index": 92.213512,
+      "raw_ratio": 0.135799448,
+      "index": 90.532965,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-11-30",
-      "sp500": 4567.8,
+      "sp500": 4559.34,
       "foreign_adjusted_mzm": 30310.92062,
-      "raw_ratio": 0.150698161,
-      "index": 100.465441,
+      "raw_ratio": 0.150419054,
+      "index": 100.279369,
       "kind": "matched_monthly"
     },
     {
@@ -6269,18 +6269,18 @@
     },
     {
       "date": "2024-01-31",
-      "sp500": 4845.65,
+      "sp500": 4890.97,
       "foreign_adjusted_mzm": 30535.105344,
-      "raw_ratio": 0.158691118,
-      "index": 105.794079,
+      "raw_ratio": 0.160175311,
+      "index": 106.783541,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-02-29",
-      "sp500": 5096.27,
+      "sp500": 5088.8,
       "foreign_adjusted_mzm": 30430.448366,
-      "raw_ratio": 0.167472721,
-      "index": 111.648481,
+      "raw_ratio": 0.167227244,
+      "index": 111.484829,
       "kind": "matched_monthly"
     },
     {
@@ -6293,18 +6293,18 @@
     },
     {
       "date": "2024-04-30",
-      "sp500": 5035.69,
+      "sp500": 5099.96,
       "foreign_adjusted_mzm": 30836.569832,
-      "raw_ratio": 0.163302534,
-      "index": 108.868356,
+      "raw_ratio": 0.165386748,
+      "index": 110.257832,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-05-31",
-      "sp500": 5277.51,
+      "sp500": 5304.72,
       "foreign_adjusted_mzm": 30599.269581,
-      "raw_ratio": 0.172471764,
-      "index": 114.981176,
+      "raw_ratio": 0.173361001,
+      "index": 115.574001,
       "kind": "matched_monthly"
     },
     {
@@ -6317,106 +6317,106 @@
     },
     {
       "date": "2024-07-31",
-      "sp500": 5522.3,
+      "sp500": 5459.1,
       "foreign_adjusted_mzm": 30986.077298,
-      "raw_ratio": 0.178218751,
-      "index": 118.812501,
+      "raw_ratio": 0.176179125,
+      "index": 117.45275,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-08-31",
-      "sp500": 5648.4,
+      "sp500": 5634.61,
       "foreign_adjusted_mzm": 31045.684334,
-      "raw_ratio": 0.181938331,
-      "index": 121.292221,
+      "raw_ratio": 0.181494147,
+      "index": 120.996098,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-09-30",
-      "sp500": 5762.48,
+      "sp500": 5738.17,
       "foreign_adjusted_mzm": 31114.421551,
-      "raw_ratio": 0.185202865,
-      "index": 123.468576,
+      "raw_ratio": 0.184421555,
+      "index": 122.947703,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-10-31",
-      "sp500": 5705.45,
+      "sp500": 5808.12,
       "foreign_adjusted_mzm": 31809.422744,
-      "raw_ratio": 0.179363519,
-      "index": 119.575679,
+      "raw_ratio": 0.182591179,
+      "index": 121.727453,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-11-30",
-      "sp500": 6032.38,
+      "sp500": 5969.34,
       "foreign_adjusted_mzm": 32048.382936,
-      "raw_ratio": 0.188227282,
-      "index": 125.484854,
+      "raw_ratio": 0.186260256,
+      "index": 124.173504,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-12-31",
-      "sp500": 5881.63,
+      "sp500": 5970.84,
       "foreign_adjusted_mzm": 32262.478704,
-      "raw_ratio": 0.182305583,
-      "index": 121.537056,
+      "raw_ratio": 0.185070715,
+      "index": 123.380477,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-01-31",
-      "sp500": 6040.53,
+      "sp500": 6101.24,
       "foreign_adjusted_mzm": 32441.796091,
-      "raw_ratio": 0.186195918,
-      "index": 124.130612,
+      "raw_ratio": 0.188067269,
+      "index": 125.378179,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-02-28",
-      "sp500": 5954.5,
+      "sp500": 6013.13,
       "foreign_adjusted_mzm": 32331.574984,
-      "raw_ratio": 0.184169809,
-      "index": 122.779873,
+      "raw_ratio": 0.185983207,
+      "index": 123.988805,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-03-31",
-      "sp500": 5611.85,
+      "sp500": 5580.94,
       "foreign_adjusted_mzm": 32639.591926,
-      "raw_ratio": 0.171933828,
-      "index": 114.622552,
+      "raw_ratio": 0.170986819,
+      "index": 113.991213,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-04-30",
-      "sp500": 5569.06,
+      "sp500": 5525.21,
       "foreign_adjusted_mzm": 32816.885519,
-      "raw_ratio": 0.169701052,
-      "index": 113.134035,
+      "raw_ratio": 0.16836485,
+      "index": 112.243233,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-05-31",
-      "sp500": 5911.69,
+      "sp500": 5802.82,
       "foreign_adjusted_mzm": 32579.681204,
-      "raw_ratio": 0.18145328,
-      "index": 120.968853,
+      "raw_ratio": 0.178111626,
+      "index": 118.741084,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-06-30",
-      "sp500": 6204.95,
+      "sp500": 6173.07,
       "foreign_adjusted_mzm": 32734.49926,
-      "raw_ratio": 0.189553839,
-      "index": 126.369226,
+      "raw_ratio": 0.188579943,
+      "index": 125.719962,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-07-31",
-      "sp500": 6339.39,
+      "sp500": 6388.64,
       "foreign_adjusted_mzm": 33153.340419,
-      "raw_ratio": 0.191214216,
-      "index": 127.476144,
+      "raw_ratio": 0.192699738,
+      "index": 128.466492,
       "kind": "matched_monthly"
     },
     {
@@ -6429,18 +6429,18 @@
     },
     {
       "date": "2025-09-30",
-      "sp500": 6688.46,
+      "sp500": 6643.7,
       "foreign_adjusted_mzm": 33259.5925,
-      "raw_ratio": 0.201098676,
-      "index": 134.065784,
+      "raw_ratio": 0.199752898,
+      "index": 133.168599,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-10-31",
-      "sp500": 6840.2,
+      "sp500": 6791.69,
       "foreign_adjusted_mzm": 34014.750227,
-      "raw_ratio": 0.201095112,
-      "index": 134.063408,
+      "raw_ratio": 0.199668966,
+      "index": 133.112644,
       "kind": "matched_monthly"
     },
     {
@@ -12087,42 +12087,42 @@
     },
     {
       "date": "2016-11-30",
-      "sp500": 2198.81,
+      "sp500": 2213.35,
       "foreign_adjusted_mzm": 18033.769895,
-      "raw_ratio": 0.121927363,
-      "index": 81.284908,
+      "raw_ratio": 0.122733628,
+      "index": 81.822418,
       "kind": "matched_monthly"
     },
     {
       "date": "2016-12-31",
-      "sp500": 2238.83,
+      "sp500": 2263.79,
       "foreign_adjusted_mzm": 18182.781079,
-      "raw_ratio": 0.123129129,
-      "index": 82.086086,
+      "raw_ratio": 0.124501856,
+      "index": 83.001238,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-01-31",
-      "sp500": 2278.87,
+      "sp500": 2294.69,
       "foreign_adjusted_mzm": 18211.817315,
-      "raw_ratio": 0.125131389,
-      "index": 83.420926,
+      "raw_ratio": 0.126000056,
+      "index": 84.000037,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-02-28",
-      "sp500": 2363.64,
+      "sp500": 2367.34,
       "foreign_adjusted_mzm": 18247.349724,
-      "raw_ratio": 0.129533331,
-      "index": 86.355554,
+      "raw_ratio": 0.129736101,
+      "index": 86.490734,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-03-31",
-      "sp500": 2362.72,
+      "sp500": 2343.98,
       "foreign_adjusted_mzm": 18474.530337,
-      "raw_ratio": 0.127890667,
-      "index": 85.260444,
+      "raw_ratio": 0.126876297,
+      "index": 84.584198,
       "kind": "matched_monthly"
     },
     {
@@ -12135,58 +12135,58 @@
     },
     {
       "date": "2017-05-31",
-      "sp500": 2411.8,
+      "sp500": 2415.82,
       "foreign_adjusted_mzm": 18354.912832,
-      "raw_ratio": 0.131398063,
-      "index": 87.598709,
+      "raw_ratio": 0.131617078,
+      "index": 87.744719,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-06-30",
-      "sp500": 2423.41,
+      "sp500": 2438.3,
       "foreign_adjusted_mzm": 18410.749302,
-      "raw_ratio": 0.131630167,
-      "index": 87.753444,
+      "raw_ratio": 0.132438933,
+      "index": 88.292622,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-07-31",
-      "sp500": 2470.3,
+      "sp500": 2472.1,
       "foreign_adjusted_mzm": 18743.006685,
-      "raw_ratio": 0.131798491,
-      "index": 87.865661,
+      "raw_ratio": 0.131894527,
+      "index": 87.929685,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-08-31",
-      "sp500": 2471.65,
+      "sp500": 2443.05,
       "foreign_adjusted_mzm": 18809.850251,
-      "raw_ratio": 0.131401897,
-      "index": 87.601264,
+      "raw_ratio": 0.129881417,
+      "index": 86.587611,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-09-30",
-      "sp500": 2519.36,
+      "sp500": 2502.22,
       "foreign_adjusted_mzm": 18853.064806,
-      "raw_ratio": 0.133631323,
-      "index": 89.087549,
+      "raw_ratio": 0.132722187,
+      "index": 88.481458,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-10-31",
-      "sp500": 2575.26,
+      "sp500": 2581.07,
       "foreign_adjusted_mzm": 18990.305684,
-      "raw_ratio": 0.135609191,
-      "index": 90.406128,
+      "raw_ratio": 0.135915137,
+      "index": 90.610091,
       "kind": "matched_monthly"
     },
     {
       "date": "2017-11-30",
-      "sp500": 2647.58,
+      "sp500": 2602.42,
       "foreign_adjusted_mzm": 19075.469476,
-      "raw_ratio": 0.138795011,
-      "index": 92.530007,
+      "raw_ratio": 0.136427573,
+      "index": 90.951715,
       "kind": "matched_monthly"
     },
     {
@@ -12199,66 +12199,66 @@
     },
     {
       "date": "2018-01-31",
-      "sp500": 2823.81,
+      "sp500": 2872.87,
       "foreign_adjusted_mzm": 19142.823811,
-      "raw_ratio": 0.14751272,
-      "index": 98.341813,
+      "raw_ratio": 0.15007556,
+      "index": 100.050373,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-02-28",
-      "sp500": 2713.83,
+      "sp500": 2747.3,
       "foreign_adjusted_mzm": 19110.767212,
-      "raw_ratio": 0.142005288,
-      "index": 94.670192,
+      "raw_ratio": 0.143756657,
+      "index": 95.837771,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-03-31",
-      "sp500": 2640.87,
+      "sp500": 2588.26,
       "foreign_adjusted_mzm": 19327.941169,
-      "raw_ratio": 0.136634832,
-      "index": 91.089888,
+      "raw_ratio": 0.133912866,
+      "index": 89.275244,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-04-30",
-      "sp500": 2648.05,
+      "sp500": 2669.91,
       "foreign_adjusted_mzm": 19311.172221,
-      "raw_ratio": 0.137125285,
-      "index": 91.416857,
+      "raw_ratio": 0.138257272,
+      "index": 92.171515,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-05-31",
-      "sp500": 2705.27,
+      "sp500": 2721.33,
       "foreign_adjusted_mzm": 19162.842455,
-      "raw_ratio": 0.141172689,
-      "index": 94.115126,
+      "raw_ratio": 0.142010769,
+      "index": 94.673846,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-06-30",
-      "sp500": 2718.37,
+      "sp500": 2754.88,
       "foreign_adjusted_mzm": 19250.956648,
-      "raw_ratio": 0.141207009,
-      "index": 94.138006,
+      "raw_ratio": 0.143103538,
+      "index": 95.402358,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-07-31",
-      "sp500": 2816.29,
+      "sp500": 2818.82,
       "foreign_adjusted_mzm": 19325.54219,
-      "raw_ratio": 0.1457289,
-      "index": 97.1526,
+      "raw_ratio": 0.145859815,
+      "index": 97.239876,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-08-31",
-      "sp500": 2901.52,
+      "sp500": 2874.69,
       "foreign_adjusted_mzm": 19367.939456,
-      "raw_ratio": 0.149810464,
-      "index": 99.873643,
+      "raw_ratio": 0.148425185,
+      "index": 98.950123,
       "kind": "matched_monthly"
     },
     {
@@ -12271,42 +12271,42 @@
     },
     {
       "date": "2018-10-31",
-      "sp500": 2711.74,
+      "sp500": 2658.69,
       "foreign_adjusted_mzm": 19665.919496,
-      "raw_ratio": 0.137890323,
-      "index": 91.926882,
+      "raw_ratio": 0.135192763,
+      "index": 90.128509,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-11-30",
-      "sp500": 2760.17,
+      "sp500": 2632.56,
       "foreign_adjusted_mzm": 19692.212213,
-      "raw_ratio": 0.140165562,
-      "index": 93.443708,
+      "raw_ratio": 0.133685336,
+      "index": 89.123557,
       "kind": "matched_monthly"
     },
     {
       "date": "2018-12-31",
-      "sp500": 2506.85,
+      "sp500": 2485.74,
       "foreign_adjusted_mzm": 19899.505516,
-      "raw_ratio": 0.125975492,
-      "index": 83.983661,
+      "raw_ratio": 0.124914662,
+      "index": 83.276441,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-01-31",
-      "sp500": 2704.1,
+      "sp500": 2664.76,
       "foreign_adjusted_mzm": 19888.048282,
-      "raw_ratio": 0.135966082,
-      "index": 90.644055,
+      "raw_ratio": 0.133988009,
+      "index": 89.32534,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-02-28",
-      "sp500": 2784.49,
+      "sp500": 2792.67,
       "foreign_adjusted_mzm": 19834.738666,
-      "raw_ratio": 0.140384507,
-      "index": 93.589671,
+      "raw_ratio": 0.140796914,
+      "index": 93.86461,
       "kind": "matched_monthly"
     },
     {
@@ -12319,18 +12319,18 @@
     },
     {
       "date": "2019-04-30",
-      "sp500": 2945.83,
+      "sp500": 2939.88,
       "foreign_adjusted_mzm": 20269.315491,
-      "raw_ratio": 0.145334459,
-      "index": 96.889639,
+      "raw_ratio": 0.145040912,
+      "index": 96.693941,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-05-31",
-      "sp500": 2752.06,
+      "sp500": 2826.06,
       "foreign_adjusted_mzm": 20180.387809,
-      "raw_ratio": 0.136372999,
-      "index": 90.915332,
+      "raw_ratio": 0.140039925,
+      "index": 93.35995,
       "kind": "matched_monthly"
     },
     {
@@ -12343,82 +12343,82 @@
     },
     {
       "date": "2019-07-31",
-      "sp500": 2980.38,
+      "sp500": 3025.86,
       "foreign_adjusted_mzm": 20728.071071,
-      "raw_ratio": 0.143784725,
-      "index": 95.856483,
+      "raw_ratio": 0.145978851,
+      "index": 97.319234,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-08-31",
-      "sp500": 2926.46,
+      "sp500": 2847.11,
       "foreign_adjusted_mzm": 20803.645611,
-      "raw_ratio": 0.140670537,
-      "index": 93.780358,
+      "raw_ratio": 0.136856302,
+      "index": 91.237534,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-09-30",
-      "sp500": 2976.74,
+      "sp500": 2961.79,
       "foreign_adjusted_mzm": 20894.537605,
-      "raw_ratio": 0.142464986,
-      "index": 94.976657,
+      "raw_ratio": 0.141749488,
+      "index": 94.499658,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-10-31",
-      "sp500": 3037.56,
+      "sp500": 3022.55,
       "foreign_adjusted_mzm": 21271.128196,
-      "raw_ratio": 0.142802017,
-      "index": 95.201344,
+      "raw_ratio": 0.142096365,
+      "index": 94.73091,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-11-30",
-      "sp500": 3140.98,
+      "sp500": 3110.29,
       "foreign_adjusted_mzm": 21447.173343,
-      "raw_ratio": 0.146451933,
-      "index": 97.634622,
+      "raw_ratio": 0.145020976,
+      "index": 96.68065,
       "kind": "matched_monthly"
     },
     {
       "date": "2019-12-31",
-      "sp500": 3230.78,
+      "sp500": 3240.02,
       "foreign_adjusted_mzm": 21659.086579,
-      "raw_ratio": 0.149165109,
-      "index": 99.443406,
+      "raw_ratio": 0.149591719,
+      "index": 99.727813,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-01-31",
-      "sp500": 3225.52,
+      "sp500": 3295.47,
       "foreign_adjusted_mzm": 22812.777852,
-      "raw_ratio": 0.141390935,
-      "index": 94.260624,
+      "raw_ratio": 0.144457199,
+      "index": 96.3048,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-02-29",
-      "sp500": 2954.22,
+      "sp500": 3337.75,
       "foreign_adjusted_mzm": 22782.666251,
-      "raw_ratio": 0.129669634,
-      "index": 86.446423,
+      "raw_ratio": 0.146503924,
+      "index": 97.669283,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-03-31",
-      "sp500": 2584.59,
+      "sp500": 2541.47,
       "foreign_adjusted_mzm": 23574.409141,
-      "raw_ratio": 0.10963541,
-      "index": 73.090273,
+      "raw_ratio": 0.107806307,
+      "index": 71.870872,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-04-30",
-      "sp500": 2912.43,
+      "sp500": 2836.74,
       "foreign_adjusted_mzm": 25219.38252,
-      "raw_ratio": 0.115483795,
-      "index": 76.989197,
+      "raw_ratio": 0.112482532,
+      "index": 74.988355,
       "kind": "matched_monthly"
     },
     {
@@ -12431,58 +12431,58 @@
     },
     {
       "date": "2020-06-30",
-      "sp500": 3100.29,
+      "sp500": 3009.05,
       "foreign_adjusted_mzm": 26489.68541,
-      "raw_ratio": 0.11703763,
-      "index": 78.025087,
+      "raw_ratio": 0.11359327,
+      "index": 75.728847,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-07-31",
-      "sp500": 3271.12,
+      "sp500": 3215.63,
       "foreign_adjusted_mzm": 26504.640128,
-      "raw_ratio": 0.12341688,
-      "index": 82.27792,
+      "raw_ratio": 0.121323285,
+      "index": 80.88219,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-08-31",
-      "sp500": 3500.31,
+      "sp500": 3508.01,
       "foreign_adjusted_mzm": 26640.903917,
-      "raw_ratio": 0.13138856,
-      "index": 87.592373,
+      "raw_ratio": 0.131677589,
+      "index": 87.785059,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-09-30",
-      "sp500": 3363.0,
+      "sp500": 3298.46,
       "foreign_adjusted_mzm": 26971.940241,
-      "raw_ratio": 0.124685135,
-      "index": 83.123423,
+      "raw_ratio": 0.122292277,
+      "index": 81.528185,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-10-31",
-      "sp500": 3269.96,
+      "sp500": 3465.39,
       "foreign_adjusted_mzm": 27209.707481,
-      "raw_ratio": 0.120176228,
-      "index": 80.117485,
+      "raw_ratio": 0.127358591,
+      "index": 84.905727,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-11-30",
-      "sp500": 3621.63,
+      "sp500": 3638.35,
       "foreign_adjusted_mzm": 27617.488846,
-      "raw_ratio": 0.131135384,
-      "index": 87.423589,
+      "raw_ratio": 0.131740797,
+      "index": 87.827198,
       "kind": "matched_monthly"
     },
     {
       "date": "2020-12-31",
-      "sp500": 3756.07,
+      "sp500": 3703.06,
       "foreign_adjusted_mzm": 28023.338208,
-      "raw_ratio": 0.134033639,
-      "index": 89.355759,
+      "raw_ratio": 0.132142002,
+      "index": 88.094668,
       "kind": "matched_monthly"
     },
     {
@@ -12503,18 +12503,18 @@
     },
     {
       "date": "2021-03-31",
-      "sp500": 3972.89,
+      "sp500": 3974.54,
       "foreign_adjusted_mzm": 29311.342469,
-      "raw_ratio": 0.135541045,
-      "index": 90.360697,
+      "raw_ratio": 0.135597338,
+      "index": 90.398225,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-04-30",
-      "sp500": 4181.17,
+      "sp500": 4180.17,
       "foreign_adjusted_mzm": 29732.471337,
-      "raw_ratio": 0.140626386,
-      "index": 93.750924,
+      "raw_ratio": 0.140592753,
+      "index": 93.728502,
       "kind": "matched_monthly"
     },
     {
@@ -12527,34 +12527,34 @@
     },
     {
       "date": "2021-06-30",
-      "sp500": 4297.5,
+      "sp500": 4280.7,
       "foreign_adjusted_mzm": 29997.457955,
-      "raw_ratio": 0.143262139,
-      "index": 95.508093,
+      "raw_ratio": 0.142702092,
+      "index": 95.134728,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-07-31",
-      "sp500": 4395.26,
+      "sp500": 4411.79,
       "foreign_adjusted_mzm": 30251.32414,
-      "raw_ratio": 0.145291491,
-      "index": 96.860994,
+      "raw_ratio": 0.145837914,
+      "index": 97.225276,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-08-31",
-      "sp500": 4522.68,
+      "sp500": 4509.37,
       "foreign_adjusted_mzm": 30563.775056,
-      "raw_ratio": 0.147975176,
-      "index": 98.650117,
+      "raw_ratio": 0.147539693,
+      "index": 98.359796,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-09-30",
-      "sp500": 4307.54,
+      "sp500": 4455.48,
       "foreign_adjusted_mzm": 30833.794367,
-      "raw_ratio": 0.139701911,
-      "index": 93.134607,
+      "raw_ratio": 0.144499893,
+      "index": 96.333262,
       "kind": "matched_monthly"
     },
     {
@@ -12567,66 +12567,66 @@
     },
     {
       "date": "2021-11-30",
-      "sp500": 4567.0,
+      "sp500": 4594.62,
       "foreign_adjusted_mzm": 31848.333645,
-      "raw_ratio": 0.143398397,
-      "index": 95.598932,
+      "raw_ratio": 0.144265633,
+      "index": 96.177088,
       "kind": "matched_monthly"
     },
     {
       "date": "2021-12-31",
-      "sp500": 4766.18,
+      "sp500": 4725.79,
       "foreign_adjusted_mzm": 32277.660231,
-      "raw_ratio": 0.14766188,
-      "index": 98.441254,
+      "raw_ratio": 0.14641055,
+      "index": 97.607034,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-01-31",
-      "sp500": 4515.55,
+      "sp500": 4431.85,
       "foreign_adjusted_mzm": 32002.357842,
-      "raw_ratio": 0.141100541,
-      "index": 94.067027,
+      "raw_ratio": 0.138485109,
+      "index": 92.323406,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-02-28",
-      "sp500": 4373.94,
+      "sp500": 4384.65,
       "foreign_adjusted_mzm": 31953.661431,
-      "raw_ratio": 0.136883844,
-      "index": 91.255896,
+      "raw_ratio": 0.137219017,
+      "index": 91.479344,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-03-31",
-      "sp500": 4530.41,
+      "sp500": 4543.06,
       "foreign_adjusted_mzm": 32305.803829,
-      "raw_ratio": 0.140235173,
-      "index": 93.490116,
+      "raw_ratio": 0.140626744,
+      "index": 93.751163,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-04-30",
-      "sp500": 4131.93,
+      "sp500": 4271.78,
       "foreign_adjusted_mzm": 32286.599214,
-      "raw_ratio": 0.127976625,
-      "index": 85.31775,
+      "raw_ratio": 0.132308143,
+      "index": 88.205429,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-05-31",
-      "sp500": 4132.15,
+      "sp500": 4158.24,
       "foreign_adjusted_mzm": 31879.132861,
-      "raw_ratio": 0.129619272,
-      "index": 86.412848,
+      "raw_ratio": 0.130437676,
+      "index": 86.958451,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-06-30",
-      "sp500": 3785.38,
+      "sp500": 3911.74,
       "foreign_adjusted_mzm": 31849.666515,
-      "raw_ratio": 0.11885148,
-      "index": 79.23432,
+      "raw_ratio": 0.122818868,
+      "index": 81.879246,
       "kind": "matched_monthly"
     },
     {
@@ -12639,66 +12639,66 @@
     },
     {
       "date": "2022-08-31",
-      "sp500": 3955.0,
+      "sp500": 4057.66,
       "foreign_adjusted_mzm": 31646.789479,
-      "raw_ratio": 0.124973183,
-      "index": 83.315455,
+      "raw_ratio": 0.128217114,
+      "index": 85.478076,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-09-30",
-      "sp500": 3585.62,
+      "sp500": 3693.23,
       "foreign_adjusted_mzm": 31467.650418,
-      "raw_ratio": 0.113946226,
-      "index": 75.964151,
+      "raw_ratio": 0.117365928,
+      "index": 78.243952,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-10-31",
-      "sp500": 3871.98,
+      "sp500": 3901.06,
       "foreign_adjusted_mzm": 31332.547027,
-      "raw_ratio": 0.123576931,
-      "index": 82.384621,
+      "raw_ratio": 0.124505039,
+      "index": 83.00336,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-11-30",
-      "sp500": 4080.11,
+      "sp500": 4026.12,
       "foreign_adjusted_mzm": 31228.171346,
-      "raw_ratio": 0.130654785,
-      "index": 87.10319,
+      "raw_ratio": 0.128925897,
+      "index": 85.950598,
       "kind": "matched_monthly"
     },
     {
       "date": "2022-12-31",
-      "sp500": 3839.5,
+      "sp500": 3844.82,
       "foreign_adjusted_mzm": 31128.962779,
-      "raw_ratio": 0.123341726,
-      "index": 82.227817,
+      "raw_ratio": 0.123512628,
+      "index": 82.341752,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-01-31",
-      "sp500": 4076.6,
+      "sp500": 4070.56,
       "foreign_adjusted_mzm": 31478.462076,
-      "raw_ratio": 0.129504421,
-      "index": 86.336281,
+      "raw_ratio": 0.129312544,
+      "index": 86.208362,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-02-28",
-      "sp500": 3970.15,
+      "sp500": 3970.04,
       "foreign_adjusted_mzm": 31149.222315,
-      "raw_ratio": 0.127455831,
-      "index": 84.970554,
+      "raw_ratio": 0.127452299,
+      "index": 84.968199,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-03-31",
-      "sp500": 4109.31,
+      "sp500": 3970.99,
       "foreign_adjusted_mzm": 30841.207131,
-      "raw_ratio": 0.133240894,
-      "index": 88.827262,
+      "raw_ratio": 0.128755985,
+      "index": 85.837323,
       "kind": "matched_monthly"
     },
     {
@@ -12711,58 +12711,58 @@
     },
     {
       "date": "2023-05-31",
-      "sp500": 4179.83,
+      "sp500": 4205.45,
       "foreign_adjusted_mzm": 30305.219329,
-      "raw_ratio": 0.137924427,
-      "index": 91.949618,
+      "raw_ratio": 0.138769826,
+      "index": 92.513217,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-06-30",
-      "sp500": 4450.38,
+      "sp500": 4348.33,
       "foreign_adjusted_mzm": 30210.954355,
-      "raw_ratio": 0.147310143,
-      "index": 98.206762,
+      "raw_ratio": 0.143932229,
+      "index": 95.954819,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-07-31",
-      "sp500": 4588.96,
+      "sp500": 4582.23,
       "foreign_adjusted_mzm": 30455.260305,
-      "raw_ratio": 0.150678732,
-      "index": 100.452488,
+      "raw_ratio": 0.150457752,
+      "index": 100.305168,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-08-31",
-      "sp500": 4507.66,
+      "sp500": 4405.71,
       "foreign_adjusted_mzm": 30304.234943,
-      "raw_ratio": 0.148746867,
-      "index": 99.164578,
+      "raw_ratio": 0.145382651,
+      "index": 96.921767,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-09-30",
-      "sp500": 4288.05,
+      "sp500": 4320.06,
       "foreign_adjusted_mzm": 30183.856172,
-      "raw_ratio": 0.142064353,
-      "index": 94.709569,
+      "raw_ratio": 0.143124854,
+      "index": 95.416569,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-10-31",
-      "sp500": 4193.8,
+      "sp500": 4117.37,
       "foreign_adjusted_mzm": 30319.490014,
-      "raw_ratio": 0.138320269,
-      "index": 92.213512,
+      "raw_ratio": 0.135799448,
+      "index": 90.532965,
       "kind": "matched_monthly"
     },
     {
       "date": "2023-11-30",
-      "sp500": 4567.8,
+      "sp500": 4559.34,
       "foreign_adjusted_mzm": 30310.92062,
-      "raw_ratio": 0.150698161,
-      "index": 100.465441,
+      "raw_ratio": 0.150419054,
+      "index": 100.279369,
       "kind": "matched_monthly"
     },
     {
@@ -12775,18 +12775,18 @@
     },
     {
       "date": "2024-01-31",
-      "sp500": 4845.65,
+      "sp500": 4890.97,
       "foreign_adjusted_mzm": 30535.105344,
-      "raw_ratio": 0.158691118,
-      "index": 105.794079,
+      "raw_ratio": 0.160175311,
+      "index": 106.783541,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-02-29",
-      "sp500": 5096.27,
+      "sp500": 5088.8,
       "foreign_adjusted_mzm": 30430.448366,
-      "raw_ratio": 0.167472721,
-      "index": 111.648481,
+      "raw_ratio": 0.167227244,
+      "index": 111.484829,
       "kind": "matched_monthly"
     },
     {
@@ -12799,18 +12799,18 @@
     },
     {
       "date": "2024-04-30",
-      "sp500": 5035.69,
+      "sp500": 5099.96,
       "foreign_adjusted_mzm": 30836.569832,
-      "raw_ratio": 0.163302534,
-      "index": 108.868356,
+      "raw_ratio": 0.165386748,
+      "index": 110.257832,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-05-31",
-      "sp500": 5277.51,
+      "sp500": 5304.72,
       "foreign_adjusted_mzm": 30599.269581,
-      "raw_ratio": 0.172471764,
-      "index": 114.981176,
+      "raw_ratio": 0.173361001,
+      "index": 115.574001,
       "kind": "matched_monthly"
     },
     {
@@ -12823,106 +12823,106 @@
     },
     {
       "date": "2024-07-31",
-      "sp500": 5522.3,
+      "sp500": 5459.1,
       "foreign_adjusted_mzm": 30986.077298,
-      "raw_ratio": 0.178218751,
-      "index": 118.812501,
+      "raw_ratio": 0.176179125,
+      "index": 117.45275,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-08-31",
-      "sp500": 5648.4,
+      "sp500": 5634.61,
       "foreign_adjusted_mzm": 31045.684334,
-      "raw_ratio": 0.181938331,
-      "index": 121.292221,
+      "raw_ratio": 0.181494147,
+      "index": 120.996098,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-09-30",
-      "sp500": 5762.48,
+      "sp500": 5738.17,
       "foreign_adjusted_mzm": 31114.421551,
-      "raw_ratio": 0.185202865,
-      "index": 123.468576,
+      "raw_ratio": 0.184421555,
+      "index": 122.947703,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-10-31",
-      "sp500": 5705.45,
+      "sp500": 5808.12,
       "foreign_adjusted_mzm": 31809.422744,
-      "raw_ratio": 0.179363519,
-      "index": 119.575679,
+      "raw_ratio": 0.182591179,
+      "index": 121.727453,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-11-30",
-      "sp500": 6032.38,
+      "sp500": 5969.34,
       "foreign_adjusted_mzm": 32048.382936,
-      "raw_ratio": 0.188227282,
-      "index": 125.484854,
+      "raw_ratio": 0.186260256,
+      "index": 124.173504,
       "kind": "matched_monthly"
     },
     {
       "date": "2024-12-31",
-      "sp500": 5881.63,
+      "sp500": 5970.84,
       "foreign_adjusted_mzm": 32262.478704,
-      "raw_ratio": 0.182305583,
-      "index": 121.537056,
+      "raw_ratio": 0.185070715,
+      "index": 123.380477,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-01-31",
-      "sp500": 6040.53,
+      "sp500": 6101.24,
       "foreign_adjusted_mzm": 32441.796091,
-      "raw_ratio": 0.186195918,
-      "index": 124.130612,
+      "raw_ratio": 0.188067269,
+      "index": 125.378179,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-02-28",
-      "sp500": 5954.5,
+      "sp500": 6013.13,
       "foreign_adjusted_mzm": 32331.574984,
-      "raw_ratio": 0.184169809,
-      "index": 122.779873,
+      "raw_ratio": 0.185983207,
+      "index": 123.988805,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-03-31",
-      "sp500": 5611.85,
+      "sp500": 5580.94,
       "foreign_adjusted_mzm": 32639.591926,
-      "raw_ratio": 0.171933828,
-      "index": 114.622552,
+      "raw_ratio": 0.170986819,
+      "index": 113.991213,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-04-30",
-      "sp500": 5569.06,
+      "sp500": 5525.21,
       "foreign_adjusted_mzm": 32816.885519,
-      "raw_ratio": 0.169701052,
-      "index": 113.134035,
+      "raw_ratio": 0.16836485,
+      "index": 112.243233,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-05-31",
-      "sp500": 5911.69,
+      "sp500": 5802.82,
       "foreign_adjusted_mzm": 32579.681204,
-      "raw_ratio": 0.18145328,
-      "index": 120.968853,
+      "raw_ratio": 0.178111626,
+      "index": 118.741084,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-06-30",
-      "sp500": 6204.95,
+      "sp500": 6173.07,
       "foreign_adjusted_mzm": 32734.49926,
-      "raw_ratio": 0.189553839,
-      "index": 126.369226,
+      "raw_ratio": 0.188579943,
+      "index": 125.719962,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-07-31",
-      "sp500": 6339.39,
+      "sp500": 6388.64,
       "foreign_adjusted_mzm": 33153.340419,
-      "raw_ratio": 0.191214216,
-      "index": 127.476144,
+      "raw_ratio": 0.192699738,
+      "index": 128.466492,
       "kind": "matched_monthly"
     },
     {
@@ -12935,18 +12935,18 @@
     },
     {
       "date": "2025-09-30",
-      "sp500": 6688.46,
+      "sp500": 6643.7,
       "foreign_adjusted_mzm": 33259.5925,
-      "raw_ratio": 0.201098676,
-      "index": 134.065784,
+      "raw_ratio": 0.199752898,
+      "index": 133.168599,
       "kind": "matched_monthly"
     },
     {
       "date": "2025-10-31",
-      "sp500": 6840.2,
+      "sp500": 6791.69,
       "foreign_adjusted_mzm": 34014.750227,
-      "raw_ratio": 0.201095112,
-      "index": 134.063408,
+      "raw_ratio": 0.199668966,
+      "index": 133.112644,
       "kind": "matched_monthly"
     },
     {
@@ -13039,11 +13039,11 @@
     },
     {
       "date": "2026-11-16",
-      "sp500": 7416.589844,
+      "sp500": 7416.59,
       "foreign_adjusted_mzm_date": "2026-09-30",
       "foreign_adjusted_mzm": 35624.679509,
-      "raw_ratio": 0.208186851,
-      "index": 138.791234,
+      "raw_ratio": 0.208186855,
+      "index": 138.791237,
       "kind": "current_snapshot"
     }
   ],
@@ -13111,7 +13111,7 @@
   },
   "data_sources": {
     "sp500_historical": "sp500w.xlsx",
-    "sp500_current": "Yahoo Finance ^GSPC + FRED SP500",
+    "sp500_current": "FRED SP500",
     "money": "FRED",
     "tb3ms": "FRED TB3MS (3-Month Treasury Bill, monthly average, % p.a.)",
     "sp500_priority": "FRED where available; sp500w.xlsx fills earlier history."
