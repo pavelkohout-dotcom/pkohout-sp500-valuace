@@ -54,11 +54,12 @@ def download():
 def main():
     rows=download()
     if OUT.exists():
-        old=json.loads(OUT.read_text(encoding="utf-8")).get("history",[])
+        olddoc=json.loads(OUT.read_text(encoding="utf-8"))
+        old=olddoc.get("history",[])
         if old and rows[-1]["date"]<old[-1]["date"]:
             raise ValueError("FRED ma starsi data nez posledni uspesny beh")
-        if old==rows:
-            print("Beze zmeny")
+        if old==rows and olddoc.get("data_status") != "bootstrap_snapshot":
+            print("Beze zmeny: data uz jsou overena z FRED")
             return
     doc={
         "schema_version":1,"status":"ok","series":"CPATAX",
@@ -67,6 +68,7 @@ def main():
         "generated_utc":dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds").replace("+00:00","Z"),
         "latest_observation_date":rows[-1]["date"],
         "latest_observation_value":rows[-1]["value"],
+        "data_status":"live_fred",
         "history":rows
     }
     OUT.parent.mkdir(exist_ok=True)
