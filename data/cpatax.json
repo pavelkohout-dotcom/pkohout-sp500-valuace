@@ -2,12 +2,12 @@
   "schema_version": 1,
   "status": "ok",
   "series": "CPATAX",
-  "source": "FRED / U.S. Bureau of Economic Analysis (user-supplied historic snapshot)",
+  "source": "FRED / U.S. Bureau of Economic Analysis",
   "units": "Billions of USD, seasonally adjusted annual rate",
-  "generated_utc": "2026-11-11T20:01:01Z",
+  "generated_utc": "2026-11-20T16:05:54Z",
   "latest_observation_date": "2026-04-01",
   "latest_observation_value": 3877.434,
-  "data_status": "bootstrap_snapshot",
+  "data_status": "live_fred",
   "history": [
     {
       "date": "1947-01-01",
