@@ -4,18 +4,18 @@
   "quarter": "2026-Q3",
   "window_start": "2026-10-01",
   "window_end": "2026-11-19",
-  "generated_utc": "2026-11-19T16:45:12+00:00",
+  "generated_utc": "2026-11-20T04:14:46+00:00",
   "status": "partial",
   "provider": "Yahoo Finance",
   "universe_source": "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv",
-  "universe_asof": "2026-11-19",
+  "universe_asof": "2026-11-20",
   "universe_symbols": 503,
   "method": "first_regular_close_after_release_vs_previous_close",
   "counts": {
-    "reported_with_eps": 449,
-    "beats": 375,
-    "measured_beats": 369,
-    "declined": 168,
+    "reported_with_eps": 452,
+    "beats": 378,
+    "measured_beats": 372,
+    "declined": 171,
     "unmeasured_beats": 6
   },
   "events": [
@@ -31,7 +31,12 @@
       "beat": true,
       "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-19",
       "price_source": "https://finance.yahoo.com/quote/WMT/history/",
-      "status": "pending_close"
+      "status": "measured",
+      "before_date": "2026-11-18",
+      "after_date": "2026-11-19",
+      "before_close": 127.36000061035156,
+      "after_close": 126.04000091552734,
+      "change_pct": -1.036431916220426
     },
     {
       "id": "1327567:2026-11-18",
@@ -45,7 +50,7 @@
       "beat": true,
       "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-18",
       "price_source": "https://finance.yahoo.com/quote/PANW/history/",
-      "status": "pending_close"
+      "status": "price_unavailable"
     },
     {
       "id": "1045810:2026-11-17",
@@ -846,25 +851,6 @@
       "change_pct": -6.447481741941918
     },
     {
-      "id": "97745:2026-10-21",
-      "symbol": "TMO",
-      "company": "Thermo Fisher Scientific",
-      "reported_at": "2026-10-21T10:00:00+00:00",
-      "report_date": "2026-10-21",
-      "timing": "TAS",
-      "eps_actual": 6.68,
-      "eps_estimate": 6.4,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-21",
-      "price_source": "https://finance.yahoo.com/quote/TMO/history/",
-      "status": "measured",
-      "before_date": "2026-10-20",
-      "after_date": "2026-10-21",
-      "before_close": 687.3699951171875,
-      "after_close": 694.02001953125,
-      "change_pct": 0.9674592230242363
-    },
-    {
       "id": "313616:2026-10-21",
       "symbol": "DHR",
       "company": "Danaher Corporation",
@@ -882,6 +868,25 @@
       "before_close": 224.24000549316406,
       "after_close": 233.86000061035156,
       "change_pct": 4.2900440962934105
+    },
+    {
+      "id": "97745:2026-10-21",
+      "symbol": "TMO",
+      "company": "Thermo Fisher Scientific",
+      "reported_at": "2026-10-21T10:00:00+00:00",
+      "report_date": "2026-10-21",
+      "timing": "TAS",
+      "eps_actual": 6.68,
+      "eps_estimate": 6.4,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-21",
+      "price_source": "https://finance.yahoo.com/quote/TMO/history/",
+      "status": "measured",
+      "before_date": "2026-10-20",
+      "after_date": "2026-10-21",
+      "before_close": 687.3699951171875,
+      "after_close": 694.02001953125,
+      "change_pct": 0.9674592230242363
     },
     {
       "id": "896159:2026-10-20",
@@ -1150,6 +1155,20 @@
       "change_pct": 3.725848909628038
     },
     {
+      "id": "896878:2026-11-19",
+      "symbol": "INTU",
+      "company": "Intuit",
+      "reported_at": "2026-11-19T21:00:00+00:00",
+      "report_date": "2026-11-19",
+      "timing": "TAS",
+      "eps_actual": 2.91,
+      "eps_estimate": 2.64,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-19",
+      "price_source": "https://finance.yahoo.com/quote/INTU/history/",
+      "status": "pending_close"
+    },
+    {
       "id": "60667:2026-11-18",
       "symbol": "LOW",
       "company": "Lowe's",
@@ -1245,25 +1264,6 @@
       "change_pct": 11.6734262272145
     },
     {
-      "id": "92122:2026-11-05",
-      "symbol": "SO",
-      "company": "Southern Company",
-      "reported_at": "2026-11-05T12:30:00+00:00",
-      "report_date": "2026-11-05",
-      "timing": "TAS",
-      "eps_actual": 1.94,
-      "eps_estimate": 1.71,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-05",
-      "price_source": "https://finance.yahoo.com/quote/SO/history/",
-      "status": "measured",
-      "before_date": "2026-11-04",
-      "after_date": "2026-11-05",
-      "before_close": 93.12000274658203,
-      "after_close": 93.33999633789062,
-      "change_pct": 0.2362474063787312
-    },
-    {
       "id": "76334:2026-11-05",
       "symbol": "PH",
       "company": "Parker Hannifin",
@@ -1281,6 +1281,25 @@
       "before_close": 910.1900024414062,
       "after_close": 892.2899780273438,
       "change_pct": -1.9666250306034083
+    },
+    {
+      "id": "92122:2026-11-05",
+      "symbol": "SO",
+      "company": "Southern Company",
+      "reported_at": "2026-11-05T12:30:00+00:00",
+      "report_date": "2026-11-05",
+      "timing": "TAS",
+      "eps_actual": 1.94,
+      "eps_estimate": 1.71,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-05",
+      "price_source": "https://finance.yahoo.com/quote/SO/history/",
+      "status": "measured",
+      "before_date": "2026-11-04",
+      "after_date": "2026-11-05",
+      "before_close": 93.12000274658203,
+      "after_close": 93.33999633789062,
+      "change_pct": 0.2362474063787312
     },
     {
       "id": "1326160:2026-11-05",
@@ -1541,26 +1560,12 @@
       "beat": true,
       "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
       "price_source": "https://finance.yahoo.com/quote/SNDK/history/",
-      "status": "price_unavailable"
-    },
-    {
-      "id": "1103982:2026-10-29",
-      "symbol": "MDLZ",
-      "company": "Mondelez International",
-      "reported_at": "2026-10-29T20:05:00+00:00",
-      "report_date": "2026-10-29",
-      "timing": "TAS",
-      "eps_actual": 0.78,
-      "eps_estimate": 0.71,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
-      "price_source": "https://finance.yahoo.com/quote/MDLZ/history/",
       "status": "measured",
       "before_date": "2026-10-29",
       "after_date": "2026-10-30",
-      "before_close": 62.529998779296875,
-      "after_close": 64.94000244140625,
-      "change_pct": 3.8541559398003855
+      "before_close": 166.25625610351562,
+      "after_close": 143.8612518310547,
+      "change_pct": -13.470172369644363
     },
     {
       "id": "829224:2026-10-29",
@@ -1580,6 +1585,25 @@
       "before_close": 105.51000213623047,
       "after_close": 103.66999816894531,
       "change_pct": -1.74391425460253
+    },
+    {
+      "id": "1103982:2026-10-29",
+      "symbol": "MDLZ",
+      "company": "Mondelez International",
+      "reported_at": "2026-10-29T20:05:00+00:00",
+      "report_date": "2026-10-29",
+      "timing": "TAS",
+      "eps_actual": 0.78,
+      "eps_estimate": 0.71,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
+      "price_source": "https://finance.yahoo.com/quote/MDLZ/history/",
+      "status": "measured",
+      "before_date": "2026-10-29",
+      "after_date": "2026-10-30",
+      "before_close": 62.529998779296875,
+      "after_close": 64.94000244140625,
+      "change_pct": 3.8541559398003855
     },
     {
       "id": "1571949:2026-10-29",
@@ -1791,25 +1815,6 @@
       "change_pct": 4.509994193046385
     },
     {
-      "id": "31462:2026-10-27",
-      "symbol": "ECL",
-      "company": "Ecolab",
-      "reported_at": "2026-10-27T12:00:00+00:00",
-      "report_date": "2026-10-27",
-      "timing": "TAS",
-      "eps_actual": 2.18,
-      "eps_estimate": 2.17,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-27",
-      "price_source": "https://finance.yahoo.com/quote/ECL/history/",
-      "status": "measured",
-      "before_date": "2026-10-26",
-      "after_date": "2026-10-27",
-      "before_close": 288.8900146484375,
-      "after_close": 291.2699890136719,
-      "change_pct": 0.8238340699074254
-    },
-    {
       "id": "49826:2026-10-27",
       "symbol": "ITW",
       "company": "Illinois Tool Works",
@@ -1827,6 +1832,25 @@
       "before_close": 276.2200012207031,
       "after_close": 275.92999267578125,
       "change_pct": -0.10499187011810962
+    },
+    {
+      "id": "31462:2026-10-27",
+      "symbol": "ECL",
+      "company": "Ecolab",
+      "reported_at": "2026-10-27T12:00:00+00:00",
+      "report_date": "2026-10-27",
+      "timing": "TAS",
+      "eps_actual": 2.18,
+      "eps_estimate": 2.17,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-27",
+      "price_source": "https://finance.yahoo.com/quote/ECL/history/",
+      "status": "measured",
+      "before_date": "2026-10-26",
+      "after_date": "2026-10-27",
+      "before_close": 288.8900146484375,
+      "after_close": 291.2699890136719,
+      "change_pct": 0.8238340699074254
     },
     {
       "id": "64040:2026-10-27",
@@ -2361,6 +2385,20 @@
       "change_pct": 15.776849378264867
     },
     {
+      "id": "745732:2026-11-19",
+      "symbol": "ROST",
+      "company": "Ross Stores",
+      "reported_at": "2026-11-19T21:01:00+00:00",
+      "report_date": "2026-11-19",
+      "timing": "TAS",
+      "eps_actual": 1.91,
+      "eps_estimate": 1.87,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-19",
+      "price_source": "https://finance.yahoo.com/quote/ROST/history/",
+      "status": "pending_close"
+    },
+    {
       "id": "27419:2026-11-18",
       "symbol": "TGT",
       "company": "Target Corporation",
@@ -2722,23 +2760,23 @@
       "change_pct": 2.757222962247452
     },
     {
-      "id": "1633978:2026-11-02",
-      "symbol": "LITE",
-      "company": "Lumentum",
-      "reported_at": "2026-11-02T12:00:00+00:00",
+      "id": "65984:2026-11-02",
+      "symbol": "ETR",
+      "company": "Entergy",
+      "reported_at": "2026-11-02T11:30:00+00:00",
       "report_date": "2026-11-02",
       "timing": "TAS",
-      "eps_actual": 4.57,
-      "eps_estimate": 4.22,
+      "eps_actual": 1.98,
+      "eps_estimate": 1.7,
       "beat": true,
       "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-02",
-      "price_source": "https://finance.yahoo.com/quote/LITE/history/",
+      "price_source": "https://finance.yahoo.com/quote/ETR/history/",
       "status": "measured",
       "before_date": "2026-10-30",
       "after_date": "2026-11-02",
-      "before_close": 840.7000122070312,
-      "after_close": 684.4000244140625,
-      "change_pct": -18.591648093669612
+      "before_close": 110.11000061035156,
+      "after_close": 109.87000274658203,
+      "change_pct": -0.21796191303169454
     },
     {
       "id": "874716:2026-11-02",
@@ -2758,25 +2796,6 @@
       "before_close": 551.2100219726562,
       "after_close": 671.6400146484375,
       "change_pct": 21.848295182440538
-    },
-    {
-      "id": "65984:2026-11-02",
-      "symbol": "ETR",
-      "company": "Entergy",
-      "reported_at": "2026-11-02T11:30:00+00:00",
-      "report_date": "2026-11-02",
-      "timing": "TAS",
-      "eps_actual": 1.98,
-      "eps_estimate": 1.7,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-02",
-      "price_source": "https://finance.yahoo.com/quote/ETR/history/",
-      "status": "measured",
-      "before_date": "2026-10-30",
-      "after_date": "2026-11-02",
-      "before_close": 110.11000061035156,
-      "after_close": 109.87000274658203,
-      "change_pct": -0.21796191303169454
     },
     {
       "id": "715957:2026-10-30",
@@ -3406,6 +3425,20 @@
       "change_pct": -3.6415434948182
     },
     {
+      "id": "1601046:2026-11-19",
+      "symbol": "KEYS",
+      "company": "Keysight Technologies",
+      "reported_at": "2026-11-19T21:09:24+00:00",
+      "report_date": "2026-11-19",
+      "timing": "TAS",
+      "eps_actual": 3.61,
+      "eps_estimate": 3.38,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-19",
+      "price_source": "https://finance.yahoo.com/quote/KEYS/history/",
+      "status": "pending_close"
+    },
+    {
       "id": "1474432:2026-11-18",
       "symbol": "P",
       "company": "Everpure",
@@ -3417,7 +3450,7 @@
       "beat": true,
       "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-18",
       "price_source": "https://finance.yahoo.com/quote/P/history/",
-      "status": "pending_close"
+      "status": "price_unavailable"
     },
     {
       "id": "2128626:2026-11-11",
@@ -3532,6 +3565,25 @@
       "before_close": 121.44000244140625,
       "after_close": 118.55999755859375,
       "change_pct": -2.371545475060477
+    },
+    {
+      "id": "1037646:2026-11-05",
+      "symbol": "MTD",
+      "company": "Mettler Toledo",
+      "reported_at": "2026-11-05T21:33:59+00:00",
+      "report_date": "2026-11-05",
+      "timing": "TAS",
+      "eps_actual": 12.57,
+      "eps_estimate": 12.09,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-05",
+      "price_source": "https://finance.yahoo.com/quote/MTD/history/",
+      "status": "measured",
+      "before_date": "2026-11-05",
+      "after_date": "2026-11-06",
+      "before_close": 1679.0799560546875,
+      "after_close": 1722.1500244140625,
+      "change_pct": 2.565099309539498
     },
     {
       "id": "1335258:2026-11-05",
@@ -3739,6 +3791,25 @@
       "status": "conflicting_source"
     },
     {
+      "id": "1633978:2026-11-02",
+      "symbol": "LITE",
+      "company": "Lumentum",
+      "reported_at": "2026-11-02T12:00:00+00:00",
+      "report_date": "2026-11-02",
+      "timing": "TAS",
+      "eps_actual": 4.57,
+      "eps_estimate": 4.22,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-02",
+      "price_source": "https://finance.yahoo.com/quote/LITE/history/",
+      "status": "measured",
+      "before_date": "2026-10-30",
+      "after_date": "2026-11-02",
+      "before_close": 840.7000122070312,
+      "after_close": 684.4000244140625,
+      "change_pct": -18.591648093669612
+    },
+    {
       "id": "1001250:2026-11-02",
       "symbol": "EL",
       "company": "Estée Lauder Companies (The)",
@@ -3794,6 +3865,25 @@
       "before_close": 45.90999984741211,
       "after_close": 46.15999984741211,
       "change_pct": 0.5445436742123944
+    },
+    {
+      "id": "943819:2026-10-29",
+      "symbol": "RMD",
+      "company": "ResMed",
+      "reported_at": "2026-10-29T20:05:00+00:00",
+      "report_date": "2026-10-29",
+      "timing": "TAS",
+      "eps_actual": 2.91,
+      "eps_estimate": 2.67,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
+      "price_source": "https://finance.yahoo.com/quote/RMD/history/",
+      "status": "measured",
+      "before_date": "2026-10-29",
+      "after_date": "2026-10-30",
+      "before_close": 252.8300018310547,
+      "after_close": 229.94000244140625,
+      "change_pct": -9.053513912064881
     },
     {
       "id": "783325:2026-10-29",
@@ -4244,7 +4334,12 @@
       "beat": true,
       "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-19",
       "price_source": "https://finance.yahoo.com/quote/WSM/history/",
-      "status": "pending_close"
+      "status": "measured",
+      "before_date": "2026-11-18",
+      "after_date": "2026-11-19",
+      "before_close": 260.0899963378906,
+      "after_close": 220.66000366210938,
+      "change_pct": -15.160134273121596
     },
     {
       "id": "2041610:2026-11-09",
@@ -4302,25 +4397,6 @@
       "before_close": 112.80999755859375,
       "after_close": 112.8499984741211,
       "change_pct": 0.03545866181458024
-    },
-    {
-      "id": "1037646:2026-11-05",
-      "symbol": "MTD",
-      "company": "Mettler Toledo",
-      "reported_at": "2026-11-05T21:33:59+00:00",
-      "report_date": "2026-11-05",
-      "timing": "TAS",
-      "eps_actual": 12.57,
-      "eps_estimate": 12.09,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-05",
-      "price_source": "https://finance.yahoo.com/quote/MTD/history/",
-      "status": "measured",
-      "before_date": "2026-11-05",
-      "after_date": "2026-11-06",
-      "before_close": 1679.0799560546875,
-      "after_close": 1722.1500244140625,
-      "change_pct": 2.565099309539498
     },
     {
       "id": "827054:2026-11-05",
@@ -4492,6 +4568,25 @@
       "before_close": 24.520000457763672,
       "after_close": 25.440000534057617,
       "change_pct": 3.7520393928159645
+    },
+    {
+      "id": "746515:2026-11-03",
+      "symbol": "EXPD",
+      "company": "Expeditors International",
+      "reported_at": "2026-11-03T13:30:00+00:00",
+      "report_date": "2026-11-03",
+      "timing": "TAS",
+      "eps_actual": 2.65,
+      "eps_estimate": 2.23,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-03",
+      "price_source": "https://finance.yahoo.com/quote/EXPD/history/",
+      "status": "measured",
+      "before_date": "2026-11-02",
+      "after_date": "2026-11-03",
+      "before_close": 200.55999755859375,
+      "after_close": 204.30999755859375,
+      "change_pct": 1.869764681715469
     },
     {
       "id": "1415404:2026-11-03",
@@ -4682,25 +4777,6 @@
       "before_close": 290.05999755859375,
       "after_close": 235.99000549316406,
       "change_pct": -18.640968255027047
-    },
-    {
-      "id": "943819:2026-10-29",
-      "symbol": "RMD",
-      "company": "ResMed",
-      "reported_at": "2026-10-29T20:05:00+00:00",
-      "report_date": "2026-10-29",
-      "timing": "TAS",
-      "eps_actual": 2.91,
-      "eps_estimate": 2.67,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
-      "price_source": "https://finance.yahoo.com/quote/RMD/history/",
-      "status": "measured",
-      "before_date": "2026-10-29",
-      "after_date": "2026-10-30",
-      "before_close": 252.8300018310547,
-      "after_close": 229.94000244140625,
-      "change_pct": -9.053513912064881
     },
     {
       "id": "1093557:2026-10-29",
@@ -5406,25 +5482,6 @@
       "change_pct": -2.90398514358583
     },
     {
-      "id": "746515:2026-11-03",
-      "symbol": "EXPD",
-      "company": "Expeditors International",
-      "reported_at": "2026-11-03T13:30:00+00:00",
-      "report_date": "2026-11-03",
-      "timing": "TAS",
-      "eps_actual": 2.65,
-      "eps_estimate": 2.23,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-03",
-      "price_source": "https://finance.yahoo.com/quote/EXPD/history/",
-      "status": "measured",
-      "before_date": "2026-11-02",
-      "after_date": "2026-11-03",
-      "before_close": 200.55999755859375,
-      "after_close": 204.30999755859375,
-      "change_pct": 1.869764681715469
-    },
-    {
       "id": "1383312:2026-11-03",
       "symbol": "BR",
       "company": "Broadridge Financial Solutions",
@@ -5786,25 +5843,6 @@
       "change_pct": 5.391167636905103
     },
     {
-      "id": "91576:2026-10-20",
-      "symbol": "KEY",
-      "company": "KeyCorp",
-      "reported_at": "2026-10-20T10:30:00+00:00",
-      "report_date": "2026-10-20",
-      "timing": "TAS",
-      "eps_actual": 0.51,
-      "eps_estimate": 0.46,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-20",
-      "price_source": "https://finance.yahoo.com/quote/KEY/history/",
-      "status": "measured",
-      "before_date": "2026-10-19",
-      "after_date": "2026-10-20",
-      "before_close": 19.920000076293945,
-      "after_close": 20.809999465942383,
-      "change_pct": 4.4678684048178985
-    },
-    {
       "id": "33185:2026-10-20",
       "symbol": "EFX",
       "company": "Equifax",
@@ -5822,6 +5860,25 @@
       "before_close": 158.57000732421875,
       "after_close": 176.5399932861328,
       "change_pct": 11.332525150971273
+    },
+    {
+      "id": "91576:2026-10-20",
+      "symbol": "KEY",
+      "company": "KeyCorp",
+      "reported_at": "2026-10-20T10:30:00+00:00",
+      "report_date": "2026-10-20",
+      "timing": "TAS",
+      "eps_actual": 0.51,
+      "eps_estimate": 0.46,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-20",
+      "price_source": "https://finance.yahoo.com/quote/KEY/history/",
+      "status": "measured",
+      "before_date": "2026-10-19",
+      "after_date": "2026-10-20",
+      "before_close": 19.920000076293945,
+      "after_close": 20.809999465942383,
+      "change_pct": 4.4678684048178985
     },
     {
       "id": "1601712:2026-10-19",
@@ -6109,25 +6166,6 @@
       "change_pct": -8.758620013608809
     },
     {
-      "id": "31791:2026-11-03",
-      "symbol": "RVTY",
-      "company": "Revvity",
-      "reported_at": "2026-11-03T11:00:00+00:00",
-      "report_date": "2026-11-03",
-      "timing": "TAS",
-      "eps_actual": 1.37,
-      "eps_estimate": 1.3,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-03",
-      "price_source": "https://finance.yahoo.com/quote/RVTY/history/",
-      "status": "measured",
-      "before_date": "2026-11-02",
-      "after_date": "2026-11-03",
-      "before_close": 151.60000610351562,
-      "after_close": 163.47999572753906,
-      "change_pct": 7.836404449688161
-    },
-    {
       "id": "9389:2026-11-03",
       "symbol": "BALL",
       "company": "Ball Corporation",
@@ -6145,6 +6183,25 @@
       "before_close": 68.06999969482422,
       "after_close": 63.209999084472656,
       "change_pct": -7.13971005162366
+    },
+    {
+      "id": "31791:2026-11-03",
+      "symbol": "RVTY",
+      "company": "Revvity",
+      "reported_at": "2026-11-03T11:00:00+00:00",
+      "report_date": "2026-11-03",
+      "timing": "TAS",
+      "eps_actual": 1.37,
+      "eps_estimate": 1.3,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-03",
+      "price_source": "https://finance.yahoo.com/quote/RVTY/history/",
+      "status": "measured",
+      "before_date": "2026-11-02",
+      "after_date": "2026-11-03",
+      "before_close": 151.60000610351562,
+      "after_close": 163.47999572753906,
+      "change_pct": 7.836404449688161
     },
     {
       "id": "1336920:2026-11-03",
@@ -6183,6 +6240,44 @@
       "before_close": 184.86000061035156,
       "after_close": 184.69000244140625,
       "change_pct": -0.09196049355405522
+    },
+    {
+      "id": "922621:2026-10-29",
+      "symbol": "ERIE",
+      "company": "Erie Indemnity",
+      "reported_at": "2026-10-29T20:20:10+00:00",
+      "report_date": "2026-10-29",
+      "timing": "TAS",
+      "eps_actual": 3.56,
+      "eps_estimate": 3.41,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
+      "price_source": "https://finance.yahoo.com/quote/ERIE/history/",
+      "status": "measured",
+      "before_date": "2026-10-29",
+      "after_date": "2026-10-30",
+      "before_close": 250.7899932861328,
+      "after_close": 261.3900146484375,
+      "change_pct": 4.226652436730549
+    },
+    {
+      "id": "106535:2026-10-29",
+      "symbol": "WY",
+      "company": "Weyerhaeuser",
+      "reported_at": "2026-10-29T20:09:01+00:00",
+      "report_date": "2026-10-29",
+      "timing": "TAS",
+      "eps_actual": 0.08,
+      "eps_estimate": 0.04,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
+      "price_source": "https://finance.yahoo.com/quote/WY/history/",
+      "status": "measured",
+      "before_date": "2026-10-29",
+      "after_date": "2026-10-30",
+      "before_close": 19.75,
+      "after_close": 20.350000381469727,
+      "change_pct": 3.037976615036597
     },
     {
       "id": "1713445:2026-10-29",
@@ -6299,25 +6394,6 @@
       "change_pct": -11.135871767934635
     },
     {
-      "id": "832101:2026-10-28",
-      "symbol": "IEX",
-      "company": "IDEX Corporation",
-      "reported_at": "2026-10-28T11:00:00+00:00",
-      "report_date": "2026-10-28",
-      "timing": "TAS",
-      "eps_actual": 2.33,
-      "eps_estimate": 2.24,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-28",
-      "price_source": "https://finance.yahoo.com/quote/IEX/history/",
-      "status": "measured",
-      "before_date": "2026-10-27",
-      "after_date": "2026-10-28",
-      "before_close": 233.2100067138672,
-      "after_close": 238.5399932861328,
-      "change_pct": 2.2854879374044845
-    },
-    {
       "id": "62996:2026-10-28",
       "symbol": "MAS",
       "company": "Masco",
@@ -6354,6 +6430,25 @@
       "before_close": 33.380001068115234,
       "after_close": 34.47999954223633,
       "change_pct": 3.295381782272666
+    },
+    {
+      "id": "832101:2026-10-28",
+      "symbol": "IEX",
+      "company": "IDEX Corporation",
+      "reported_at": "2026-10-28T11:00:00+00:00",
+      "report_date": "2026-10-28",
+      "timing": "TAS",
+      "eps_actual": 2.33,
+      "eps_estimate": 2.24,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-28",
+      "price_source": "https://finance.yahoo.com/quote/IEX/history/",
+      "status": "measured",
+      "before_date": "2026-10-27",
+      "after_date": "2026-10-28",
+      "before_close": 233.2100067138672,
+      "after_close": 238.5399932861328,
+      "change_pct": 2.2854879374044845
     },
     {
       "id": "920522:2026-10-27",
@@ -6546,6 +6641,25 @@
       "change_pct": 1.689477080779711
     },
     {
+      "id": "74208:2026-11-02",
+      "symbol": "UDR",
+      "company": "UDR, Inc.",
+      "reported_at": "2026-11-02T21:16:00+00:00",
+      "report_date": "2026-11-02",
+      "timing": "TAS",
+      "eps_actual": 0.67,
+      "eps_estimate": 0.16,
+      "beat": true,
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-02",
+      "price_source": "https://finance.yahoo.com/quote/UDR/history/",
+      "status": "measured",
+      "before_date": "2026-11-02",
+      "after_date": "2026-11-03",
+      "before_close": 35.90999984741211,
+      "after_close": 35.93000030517578,
+      "change_pct": 0.05569606752620082
+    },
+    {
       "id": "21076:2026-11-02",
       "symbol": "CLX",
       "company": "Clorox",
@@ -6584,25 +6698,6 @@
       "change_pct": 0.41067723606769135
     },
     {
-      "id": "922621:2026-10-29",
-      "symbol": "ERIE",
-      "company": "Erie Indemnity",
-      "reported_at": "2026-10-29T20:20:10+00:00",
-      "report_date": "2026-10-29",
-      "timing": "TAS",
-      "eps_actual": 3.56,
-      "eps_estimate": 3.41,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
-      "price_source": "https://finance.yahoo.com/quote/ERIE/history/",
-      "status": "measured",
-      "before_date": "2026-10-29",
-      "after_date": "2026-10-30",
-      "before_close": 250.7899932861328,
-      "after_close": 261.3900146484375,
-      "change_pct": 4.226652436730549
-    },
-    {
       "id": "1609711:2026-10-29",
       "symbol": "GDDY",
       "company": "GoDaddy",
@@ -6620,25 +6715,6 @@
       "before_close": 105.88999938964844,
       "after_close": 117.23999786376953,
       "change_pct": 10.71866893903357
-    },
-    {
-      "id": "106535:2026-10-29",
-      "symbol": "WY",
-      "company": "Weyerhaeuser",
-      "reported_at": "2026-10-29T20:09:01+00:00",
-      "report_date": "2026-10-29",
-      "timing": "TAS",
-      "eps_actual": 0.08,
-      "eps_estimate": 0.04,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-10-29",
-      "price_source": "https://finance.yahoo.com/quote/WY/history/",
-      "status": "measured",
-      "before_date": "2026-10-29",
-      "after_date": "2026-10-30",
-      "before_close": 19.75,
-      "after_close": 20.350000381469727,
-      "change_pct": 3.037976615036597
     },
     {
       "id": "10456:2026-10-29",
@@ -6888,25 +6964,6 @@
       "change_pct": -0.13405132480830417
     },
     {
-      "id": "749251:2026-11-03",
-      "symbol": "IT",
-      "company": "Gartner",
-      "reported_at": "2026-11-03T11:00:00+00:00",
-      "report_date": "2026-11-03",
-      "timing": "TAS",
-      "eps_actual": 3.59,
-      "eps_estimate": 2.84,
-      "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-03",
-      "price_source": "https://finance.yahoo.com/quote/IT/history/",
-      "status": "measured",
-      "before_date": "2026-11-02",
-      "after_date": "2026-11-03",
-      "before_close": 235.25999450683594,
-      "after_close": 204.22000122070312,
-      "change_pct": -13.19391057166368
-    },
-    {
       "id": "1000228:2026-11-03",
       "symbol": "HSIC",
       "company": "Henry Schein",
@@ -6926,23 +6983,23 @@
       "change_pct": -4.756410316258741
     },
     {
-      "id": "74208:2026-11-02",
-      "symbol": "UDR",
-      "company": "UDR, Inc.",
-      "reported_at": "2026-11-02T21:16:00+00:00",
-      "report_date": "2026-11-02",
+      "id": "749251:2026-11-03",
+      "symbol": "IT",
+      "company": "Gartner",
+      "reported_at": "2026-11-03T11:00:00+00:00",
+      "report_date": "2026-11-03",
       "timing": "TAS",
-      "eps_actual": 0.67,
-      "eps_estimate": 0.16,
+      "eps_actual": 3.59,
+      "eps_estimate": 2.84,
       "beat": true,
-      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-02",
-      "price_source": "https://finance.yahoo.com/quote/UDR/history/",
+      "earnings_source": "https://finance.yahoo.com/calendar/earnings?day=2026-11-03",
+      "price_source": "https://finance.yahoo.com/quote/IT/history/",
       "status": "measured",
       "before_date": "2026-11-02",
       "after_date": "2026-11-03",
-      "before_close": 35.90999984741211,
-      "after_close": 35.93000030517578,
-      "change_pct": 0.05569606752620082
+      "before_close": 235.25999450683594,
+      "after_close": 204.22000122070312,
+      "change_pct": -13.19391057166368
     },
     {
       "id": "34903:2026-10-30",
