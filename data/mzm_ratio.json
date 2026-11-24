@@ -1,29 +1,29 @@
 {
   "schema_version": 5,
   "status": "ok",
-  "generated_utc": "2026-11-24T16:10:55Z",
+  "generated_utc": "2026-11-24T22:55:20Z",
   "series_name": "S&P 500 / Foreign-adjusted MZM proxy index",
   "history_start": "1959-01-31",
-  "history_end": "2026-09-30",
+  "history_end": "2026-10-31",
   "normalization": {
     "raw_ratio_reference": 0.15,
     "index_at_reference": 100.0,
     "formula": "100 * raw_ratio / 0.15"
   },
   "averages": {
-    "five_year": 110.421639,
-    "ten_year": 100.307502,
-    "full_history": 109.814822
+    "five_year": 110.935317,
+    "ten_year": 100.648625,
+    "full_history": 109.853431
   },
-  "five_year_monthly_average": 110.421639,
+  "five_year_monthly_average": 110.935317,
   "current_snapshot_appended_to_chart": true,
   "current_snapshot": {
     "sp500_date": "2026-11-24",
-    "sp500": 7162.879883,
-    "foreign_adjusted_mzm_date": "2026-09-30",
-    "foreign_adjusted_mzm": 35624.679509,
-    "raw_ratio": 0.201065104,
-    "index": 134.043403,
+    "sp500": 7201.089844,
+    "foreign_adjusted_mzm_date": "2026-10-31",
+    "foreign_adjusted_mzm": 35778.207748,
+    "raw_ratio": 0.201270279,
+    "index": 134.180186,
     "mixed_vintage": true
   },
   "history": [
@@ -6478,17 +6478,17 @@
     {
       "date": "2026-03-31",
       "sp500": 6528.52,
-      "foreign_adjusted_mzm": 34804.802014,
-      "raw_ratio": 0.187575266,
-      "index": 125.050177,
+      "foreign_adjusted_mzm": 34804.671136,
+      "raw_ratio": 0.187575971,
+      "index": 125.050648,
       "kind": "matched_monthly"
     },
     {
       "date": "2026-04-30",
       "sp500": 7209.01,
-      "foreign_adjusted_mzm": 35166.848073,
-      "raw_ratio": 0.204994488,
-      "index": 136.662992,
+      "foreign_adjusted_mzm": 35166.716965,
+      "raw_ratio": 0.204995252,
+      "index": 136.663501,
       "kind": "matched_monthly"
     },
     {
@@ -6502,9 +6502,9 @@
     {
       "date": "2026-06-30",
       "sp500": 7499.36,
-      "foreign_adjusted_mzm": 35321.425182,
-      "raw_ratio": 0.212317594,
-      "index": 141.545062,
+      "foreign_adjusted_mzm": 35321.162964,
+      "raw_ratio": 0.21231917,
+      "index": 141.546113,
       "kind": "matched_monthly"
     },
     {
@@ -6518,17 +6518,25 @@
     {
       "date": "2026-08-31",
       "sp500": 7686.14,
-      "foreign_adjusted_mzm": 35521.496995,
-      "raw_ratio": 0.216379957,
-      "index": 144.253305,
+      "foreign_adjusted_mzm": 35521.234777,
+      "raw_ratio": 0.216381555,
+      "index": 144.25437,
       "kind": "matched_monthly"
     },
     {
       "date": "2026-09-30",
       "sp500": 7651.54,
-      "foreign_adjusted_mzm": 35624.679509,
-      "raw_ratio": 0.214782002,
-      "index": 143.188002,
+      "foreign_adjusted_mzm": 35625.335052,
+      "raw_ratio": 0.21477805,
+      "index": 143.185367,
+      "kind": "matched_monthly"
+    },
+    {
+      "date": "2026-10-31",
+      "sp500": 7580.07,
+      "foreign_adjusted_mzm": 35778.207748,
+      "raw_ratio": 0.211862764,
+      "index": 141.241843,
       "kind": "matched_monthly"
     }
   ],
@@ -12984,17 +12992,17 @@
     {
       "date": "2026-03-31",
       "sp500": 6528.52,
-      "foreign_adjusted_mzm": 34804.802014,
-      "raw_ratio": 0.187575266,
-      "index": 125.050177,
+      "foreign_adjusted_mzm": 34804.671136,
+      "raw_ratio": 0.187575971,
+      "index": 125.050648,
       "kind": "matched_monthly"
     },
     {
       "date": "2026-04-30",
       "sp500": 7209.01,
-      "foreign_adjusted_mzm": 35166.848073,
-      "raw_ratio": 0.204994488,
-      "index": 136.662992,
+      "foreign_adjusted_mzm": 35166.716965,
+      "raw_ratio": 0.204995252,
+      "index": 136.663501,
       "kind": "matched_monthly"
     },
     {
@@ -13008,9 +13016,9 @@
     {
       "date": "2026-06-30",
       "sp500": 7499.36,
-      "foreign_adjusted_mzm": 35321.425182,
-      "raw_ratio": 0.212317594,
-      "index": 141.545062,
+      "foreign_adjusted_mzm": 35321.162964,
+      "raw_ratio": 0.21231917,
+      "index": 141.546113,
       "kind": "matched_monthly"
     },
     {
@@ -13024,26 +13032,34 @@
     {
       "date": "2026-08-31",
       "sp500": 7686.14,
-      "foreign_adjusted_mzm": 35521.496995,
-      "raw_ratio": 0.216379957,
-      "index": 144.253305,
+      "foreign_adjusted_mzm": 35521.234777,
+      "raw_ratio": 0.216381555,
+      "index": 144.25437,
       "kind": "matched_monthly"
     },
     {
       "date": "2026-09-30",
       "sp500": 7651.54,
-      "foreign_adjusted_mzm": 35624.679509,
-      "raw_ratio": 0.214782002,
-      "index": 143.188002,
+      "foreign_adjusted_mzm": 35625.335052,
+      "raw_ratio": 0.21477805,
+      "index": 143.185367,
+      "kind": "matched_monthly"
+    },
+    {
+      "date": "2026-10-31",
+      "sp500": 7580.07,
+      "foreign_adjusted_mzm": 35778.207748,
+      "raw_ratio": 0.211862764,
+      "index": 141.241843,
       "kind": "matched_monthly"
     },
     {
       "date": "2026-11-24",
-      "sp500": 7162.879883,
-      "foreign_adjusted_mzm_date": "2026-09-30",
-      "foreign_adjusted_mzm": 35624.679509,
-      "raw_ratio": 0.201065104,
-      "index": 134.043403,
+      "sp500": 7201.089844,
+      "foreign_adjusted_mzm_date": "2026-10-31",
+      "foreign_adjusted_mzm": 35778.207748,
+      "raw_ratio": 0.201270279,
+      "index": 134.180186,
       "kind": "current_snapshot"
     }
   ],
