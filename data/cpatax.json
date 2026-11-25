@@ -4,9 +4,9 @@
   "series": "CPATAX",
   "source": "FRED / U.S. Bureau of Economic Analysis",
   "units": "Billions of USD, seasonally adjusted annual rate",
-  "generated_utc": "2026-11-20T16:05:54Z",
-  "latest_observation_date": "2026-04-01",
-  "latest_observation_value": 3877.434,
+  "generated_utc": "2026-11-25T17:56:23Z",
+  "latest_observation_date": "2026-07-01",
+  "latest_observation_value": 4026.156,
   "data_status": "live_fred",
   "history": [
     {
@@ -1280,6 +1280,10 @@
     {
       "date": "2026-04-01",
       "value": 3877.434
+    },
+    {
+      "date": "2026-07-01",
+      "value": 4026.156
     }
   ]
 }
