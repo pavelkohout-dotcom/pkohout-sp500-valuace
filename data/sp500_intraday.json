@@ -2,13 +2,13 @@
   "schema_version": 1,
   "series_id": "SP500",
   "symbol": "^GSPC",
-  "value": 7013.5,
+  "value": 7029.93,
   "date": "2026-11-25",
-  "quote_time": "2026-11-25T16:30:56+00:00",
+  "quote_time": "2026-11-25T17:01:02+00:00",
   "source": "https://finance.yahoo.com/quote/%5EGSPC/",
   "provider": "Yahoo Finance",
   "frequency": "intraday",
   "delay_minutes": null,
   "fetch_status": "ok",
-  "checked_at": "2026-11-25T16:31:05+00:00"
+  "checked_at": "2026-11-25T17:01:06+00:00"
 }
